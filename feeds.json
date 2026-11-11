@@ -1,0 +1,30 @@
+{
+  "Latest F&B": [
+    {"name": "Eater", "url": "https://www.eater.com/rss/index.xml"},
+    {"name": "Honeycombers SG", "url": "https://thehoneycombers.com/singapore/feed/"},
+    {"name": "GNews: F&B today", "url": "https://news.google.com/rss/search?q=food+and+beverage+industry+when:1d"},
+    {"name": "GNews: F&B Singapore", "url": "https://news.google.com/rss/search?q=food+and+beverage+singapore+when:7d"}
+  ],
+  "Promos & Deals": [
+    {"name": "SETHLUI", "url": "https://sethlui.com/feed/"},
+    {"name": "GNews: 1-for-1 SG", "url": "https://news.google.com/rss/search?q=1-for-1+food+deal+singapore+when:7d"},
+    {"name": "GNews: Food promo SG", "url": "https://news.google.com/rss/search?q=restaurant+promotion+singapore+when:7d"},
+    {"name": "GNews: Free food freebies", "url": "https://news.google.com/rss/search?q=free+food+giveaway+promotion+when:7d"}
+  ],
+  "Turkish & Halal": [
+    {"name": "GNews: Turkish food", "url": "https://news.google.com/rss/search?q=turkish+cuisine+OR+kebab+OR+d%C3%B6ner+when:14d"},
+    {"name": "GNews: Halal SG", "url": "https://news.google.com/rss/search?q=halal+food+singapore+when:14d"},
+    {"name": "GNews: Halal industry", "url": "https://news.google.com/rss/search?q=halal+food+industry+when:14d"},
+    {"name": "GNews: Ramadan & Eid food", "url": "https://news.google.com/rss/search?q=ramadan+OR+eid+OR+hari+raya+food+when:14d"}
+  ],
+  "Social & Trends": [
+    {"name": "Social Media Today", "url": "https://www.socialmediatoday.com/feeds/news/"},
+    {"name": "GNews: Viral food", "url": "https://news.google.com/rss/search?q=viral+food+tiktok+OR+reels+when:7d"},
+    {"name": "GNews: Restaurant social", "url": "https://news.google.com/rss/search?q=restaurant+social+media+marketing+when:7d"}
+  ],
+  "Memes": [
+    {"name": "r/foodmemes", "url": "https://www.reddit.com/r/foodmemes/top/.rss?t=week"},
+    {"name": "r/KitchenConfidential", "url": "https://www.reddit.com/r/KitchenConfidential/top/.rss?t=week"},
+    {"name": "r/shittyfoodporn", "url": "https://www.reddit.com/r/shittyfoodporn/top/.rss?t=week"}
+  ]
+}

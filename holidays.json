@@ -1,0 +1,19 @@
+[
+  {"name": "Turkish Coffee Day", "tag": "Turkish", "md": "12-05"},
+  {"name": "New Year's Day (Yılbaşı)", "tag": "Turkish", "md": "01-01"},
+  {"name": "National Sovereignty & Children's Day", "tag": "Turkish", "md": "04-23"},
+  {"name": "Labour & Solidarity Day", "tag": "Turkish", "md": "05-01"},
+  {"name": "Commemoration of Atatürk, Youth & Sports Day", "tag": "Turkish", "md": "05-19"},
+  {"name": "Democracy & National Unity Day", "tag": "Turkish", "md": "07-15"},
+  {"name": "Victory Day (Zafer Bayramı)", "tag": "Turkish", "md": "08-30"},
+  {"name": "Republic Day (Cumhuriyet Bayramı)", "tag": "Turkish", "md": "10-29"},
+  {"name": "Atatürk Memorial Day", "tag": "Turkish", "md": "11-10"},
+  {"name": "Isra Mi'raj (approx)", "tag": "Muslim", "date": "2027-01-06"},
+  {"name": "Ramadan begins (approx)", "tag": "Muslim", "date": "2027-02-08"},
+  {"name": "Laylat al-Qadr (approx)", "tag": "Muslim", "date": "2027-03-05"},
+  {"name": "Eid al-Fitr / Hari Raya Puasa (approx)", "tag": "Muslim", "date": "2027-03-10"},
+  {"name": "Eid al-Adha / Hari Raya Haji (approx)", "tag": "Muslim", "date": "2027-05-17"},
+  {"name": "Islamic New Year (approx)", "tag": "Muslim", "date": "2027-06-06"},
+  {"name": "Ashura (approx)", "tag": "Muslim", "date": "2027-06-15"},
+  {"name": "Mawlid (approx)", "tag": "Muslim", "date": "2027-08-14"}
+]
