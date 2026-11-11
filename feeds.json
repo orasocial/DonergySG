@@ -1,26 +1,28 @@
 {
   "Latest F&B": [
+    {"name": "Honeycombers SG", "url": "https://thehoneycombers.com/singapore/feed/", "sg": true},
+    {"name": "GNews: F&B Singapore", "url": "https://news.google.com/rss/search?q=food+and+beverage+singapore+when:7d", "sg": true},
+    {"name": "GNews: New openings SG", "url": "https://news.google.com/rss/search?q=new+restaurant+cafe+opening+singapore+when:7d", "sg": true},
     {"name": "Eater", "url": "https://www.eater.com/rss/index.xml"},
-    {"name": "Honeycombers SG", "url": "https://thehoneycombers.com/singapore/feed/"},
-    {"name": "GNews: F&B today", "url": "https://news.google.com/rss/search?q=food+and+beverage+industry+when:1d"},
-    {"name": "GNews: F&B Singapore", "url": "https://news.google.com/rss/search?q=food+and+beverage+singapore+when:7d"}
+    {"name": "GNews: F&B today", "url": "https://news.google.com/rss/search?q=food+and+beverage+industry+when:1d"}
   ],
   "Promos & Deals": [
-    {"name": "SETHLUI", "url": "https://sethlui.com/feed/"},
-    {"name": "GNews: 1-for-1 SG", "url": "https://news.google.com/rss/search?q=1-for-1+food+deal+singapore+when:7d"},
-    {"name": "GNews: Food promo SG", "url": "https://news.google.com/rss/search?q=restaurant+promotion+singapore+when:7d"},
-    {"name": "GNews: Free food freebies", "url": "https://news.google.com/rss/search?q=free+food+giveaway+promotion+when:7d"}
+    {"name": "SETHLUI", "url": "https://sethlui.com/feed/", "sg": true},
+    {"name": "GNews: 1-for-1 SG", "url": "https://news.google.com/rss/search?q=1-for-1+food+deal+singapore+when:7d", "sg": true},
+    {"name": "GNews: Food promo SG", "url": "https://news.google.com/rss/search?q=restaurant+promotion+singapore+when:7d", "sg": true},
+    {"name": "GNews: Freebies", "url": "https://news.google.com/rss/search?q=free+food+giveaway+singapore+when:7d", "sg": true}
   ],
   "Turkish & Halal": [
-    {"name": "GNews: Turkish food", "url": "https://news.google.com/rss/search?q=turkish+cuisine+OR+kebab+OR+d%C3%B6ner+when:14d"},
-    {"name": "GNews: Halal SG", "url": "https://news.google.com/rss/search?q=halal+food+singapore+when:14d"},
-    {"name": "GNews: Halal industry", "url": "https://news.google.com/rss/search?q=halal+food+industry+when:14d"},
+    {"name": "GNews: Turkish food SG", "url": "https://news.google.com/rss/search?q=turkish+restaurant+OR+kebab+singapore+when:30d", "sg": true},
+    {"name": "GNews: Halal SG", "url": "https://news.google.com/rss/search?q=halal+food+singapore+when:14d", "sg": true},
+    {"name": "GNews: Turkish food", "url": "https://news.google.com/rss/search?q=turkish+cuisine+OR+d%C3%B6ner+when:14d"},
     {"name": "GNews: Ramadan & Eid food", "url": "https://news.google.com/rss/search?q=ramadan+OR+eid+OR+hari+raya+food+when:14d"}
   ],
   "Social & Trends": [
-    {"name": "Social Media Today", "url": "https://www.socialmediatoday.com/feeds/news/"},
-    {"name": "GNews: Viral food", "url": "https://news.google.com/rss/search?q=viral+food+tiktok+OR+reels+when:7d"},
-    {"name": "GNews: Restaurant social", "url": "https://news.google.com/rss/search?q=restaurant+social+media+marketing+when:7d"}
+    {"name": "GNews: Viral food SG", "url": "https://news.google.com/rss/search?q=viral+food+singapore+tiktok+OR+instagram+when:7d", "sg": true},
+    {"name": "GNews: F&B marketing SG", "url": "https://news.google.com/rss/search?q=singapore+restaurant+social+media+marketing+when:14d", "sg": true},
+    {"name": "r/SingaporeEats", "url": "https://www.reddit.com/r/SingaporeEats/top/.rss?t=week", "sg": true},
+    {"name": "Social Media Today", "url": "https://www.socialmediatoday.com/feeds/news/"}
   ],
   "Memes": [
     {"name": "r/foodmemes", "url": "https://www.reddit.com/r/foodmemes/top/.rss?t=week"},
