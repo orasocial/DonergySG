@@ -18,7 +18,7 @@ FOOD = X(r"\b(restaurants?|caf[eé]s?|kebabs?|kebap|d[oö]ner|turkish|mediterran
 PROMO = X(r"promo\w*|deals?|1-for-1|discount|\bsale\b|voucher|\boffers?\b|free |\$\d|s\$\d|11\.11|12\.12")
 MKT = X(r"tiktok|instagram|reels?|\bmeta\b|facebook|youtube|google (maps|business|reviews)|social media|influencer|algorithm|loyalty|campaign|marketing|viral|hashtag|shorts")
 EVENT = X(r"event|festival|concert|exhibition|countdown|bazaar|national day|christmas|new year|grand prix|\bf1\b|expo|pop-up|carnival|parade|conference|summit|tourism|visitors?")
-HALAL = X(r"halal|muis|muslim|ramadan|hari raya|\beid\b|buka puasa|turkish|t[uü]rk")
+HALAL = X(r"halal|muis|muslim|ramadan|hari raya|\beid\b|buka puasa|turkish|t[uü]rkiye|\\bt[uü]rk\\b")
 TREND = X(r"trend|viral|new (restaurant|cafe|opening)|opens?\b|opening|launch|popular|queue")
 LOC = X(r"millenia|suntec|promenade|marina bay|marina square|raffles city|citylink|esplanade|gardens by the bay|ritz-carlton|mandarin oriental|pan pacific|conrad|fairmont|swiss[oô]tel|bayfront|shenton|raffles place|downtown|\bcbd\b")
 SG = X(r"\b(singapore|singaporean|sg|s'pore|raffles|orchard|sentosa|jurong|tampines|bugis|geylang|hawker|changi|kallang|marina|suntec|millenia|ion orchard|eastpoint|toa payoh|woodlands|bedok)\b")
@@ -87,6 +87,7 @@ def parse(root, f):
         if not link.startswith("http"): continue
         pub = ""; s = find(it, "source")
         if s is not None and s.text: pub = s.text.strip()
+        if pub.startswith("http"): pub = urlsplit(pub).netloc.removeprefix("www.")
         m = re.match(r"^(.*\S)\s+[-–|]\s+([^-–|]{2,40})$", title) if "news.google.com" in f["url"] else None
         if m: title, pub = m.group(1), pub or m.group(2)
         d = find(it, "pubDate", "published", "updated"); img = ""
@@ -110,12 +111,20 @@ def norm_url(u):
     return urlunsplit(("https", host, p.path.rstrip("/") or "/", urlencode(q), ""))
 
 STOP = set("a an and the of to in on at for with from by is are be as it its this that new more up out amp s".split())
-def toks(t): return {w for w in re.findall(r"[a-z0-9$.]+", t.lower().replace("’", "'")) if w not in STOP and len(w) > 1}
+MON = {"november": "nov", "december": "dec", "january": "jan", "february": "feb", "september": "sep", "october": "oct", "august": "aug"}
+def toks(t):
+    out = set()
+    for w in re.findall(r"[a-z0-9$.]+", t.lower().replace("’", "'")):
+        w = MON.get(w.strip("."), w.strip("."))
+        if w in STOP or len(w) < 2 or re.fullmatch(r"20\d\d", w) or w in ("till", "until"): continue
+        if len(w) > 3 and w.endswith("s") and not w.endswith("ss"): w = w[:-1]
+        out.add(w)
+    return out
 def similar(a, b):
     ta, tb = toks(a), toks(b)
     if not ta or not tb: return False
     inter = ta & tb
-    return difflib.SequenceMatcher(None, " ".join(sorted(ta)), " ".join(sorted(tb))).ratio() >= .85 or (len(inter) >= 4 and len(inter) / min(len(ta), len(tb)) >= .65)
+    return difflib.SequenceMatcher(None, " ".join(sorted(ta)), " ".join(sorted(tb))).ratio() >= .85 or (len(inter) >= 5 and len(inter) / min(len(ta), len(tb)) >= .65)
 
 def classify(a, feedcat=""):
     """Return enriched article, or None if not relevant to Donergy."""
@@ -153,6 +162,7 @@ def classify(a, feedcat=""):
 def insight(a, txt, loc, hal, promo, mkt, ev, sg):
     """Rule-based (no paid API). 'w' = why it matters; 'x' = optional idea. Both are derived from headline keywords only."""
     w = x = ""
+    if re.search(r"\b(clos(e|es|ing|ure)|shut(s|ting)?|bankrupt\w*|liquidat\w*)\b", txt, re.I): return "Closures hint at which dining formats are struggling. Useful context, not an action.", ""
     if loc: w = "Mentions the Marina Bay / Millenia Walk area, so it could affect footfall or competition near Donergy."
     elif hal: w = "Halal and Turkish dining stories show what Muslim-friendly and Turkish-curious diners are looking for."
     elif promo and sg: w = "A nearby brand is running a deal, which can shift where office workers and families choose to eat."
@@ -200,7 +210,7 @@ def load_prev():
 
 def main():
     prev = load_prev(); feeds = jload("feeds.json"); status, new = [], []
-    names = {f["name"] for fl in feeds.values() for f in fl}
+    names = {f["name"] for fl in feeds.values() for f in fl}; noimg = {f["name"] for fl in feeds.values() for f in fl if not f.get("images", True)}
     old_ok = {s["n"]: s.get("lastOk") for s in prev.get("sources", [])}
     for cat, lst in feeds.items():
         for f in lst:
@@ -218,16 +228,23 @@ def main():
     cut = NOW - timedelta(days=CFG["keep_days"]); keep = []
     for a in pool.values():
         if datetime.fromisoformat(a["d"]) <= cut: continue
+        if a["s"] in noimg or "reddit" in a["l"] or "redd.it" in a.get("i", ""): a = {**a, "i": ""}
         b = classify(a)
         if b: b["cached"] = a["s"] in failed; b["hl"] = not b.get("e"); keep.append(b)
     arts = sorted(cluster(keep), key=lambda a: a["k"], reverse=True)
+    used = {}
+    for a in arts:  # the same suggestion at most twice on the page, so it stays specific
+        if a["x"]:
+            used[a["x"]] = used.get(a["x"], 0) + 1
+            if used[a["x"]] > 2: a["x"] = ""
     for a in arts:
         a.pop("sg", None)  # keep sgq/f/m: needed to re-classify cached stories on the next run
     recent = [a for a in arts if a["reg"] == "sg" and datetime.fromisoformat(a["d"]) > NOW - timedelta(days=14)]
     near = [a for a in recent if "Near Millenia" in a["c"] or "Halal Dining" in a["c"]]
-    feat = (near or recent or [None])[0]
+    pick = near or recent
+    feat = next((a for a in pick if a["x"]), None) or (pick or [None])[0]  # prefer a story that has a real content angle
     ok = sum(s["ok"] for s in status)
-    data = {"cfg": CFG, "updated": NOW.isoformat() if ok else prev.get("updated"), "ok": ok, "failed": len(failed), "sources": status,
+    data = {"cfg": CFG, "updated": NOW.isoformat() if ok else prev.get("updated"), "attempted": NOW.isoformat(), "ok": ok, "failed": len(failed), "sources": status,
             "feat": feat["l"] if feat else None, "featLabel": "Relevant to Donergy" if near else "Top Singapore story",
             "cats": CATS, "overseas": OVERSEAS, "trends": TRENDS, "articles": arts, "occasions": jload("holidays.json", [])}
     sig = hashlib.sha1(json.dumps([[a["l"], a["cached"]] for a in arts] + [[x["n"], x["ok"]] for x in status]).encode()).hexdigest(); data["sig"] = sig
