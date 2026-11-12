@@ -184,6 +184,14 @@ def cluster(arts):
         main["rel"] = rel[:4]; main["k"] = max(a["k"] for a in g) + (3 if rel else 0); out.append(main)
     return out
 
+def jload(path, default=None):
+    """Read a JSON config file. A broken file gives a clear message instead of a cryptic crash."""
+    try: return json.load(open(path, encoding="utf-8"))
+    except Exception as e:
+        print(f"WARNING: {path} is not valid JSON ({e}). Check that the file contains the right content.")
+        if default is None: raise SystemExit(f"{path} is unreadable; restore the correct file and re-run")
+        return default
+
 def load_prev():
     try:
         m = re.search(r'<script id="data" type="application/json">(.*?)</script>', open("docs/index.html", encoding="utf-8").read(), re.S)
@@ -191,7 +199,7 @@ def load_prev():
     except Exception: return {"articles": [], "updated": None, "sources": []}
 
 def main():
-    prev = load_prev(); feeds = json.load(open("feeds.json")); status, new = [], []
+    prev = load_prev(); feeds = jload("feeds.json"); status, new = [], []
     names = {f["name"] for fl in feeds.values() for f in fl}
     old_ok = {s["n"]: s.get("lastOk") for s in prev.get("sources", [])}
     for cat, lst in feeds.items():
@@ -221,14 +229,17 @@ def main():
     ok = sum(s["ok"] for s in status)
     data = {"cfg": CFG, "updated": NOW.isoformat() if ok else prev.get("updated"), "ok": ok, "failed": len(failed), "sources": status,
             "feat": feat["l"] if feat else None, "featLabel": "Relevant to Donergy" if near else "Top Singapore story",
-            "cats": CATS, "overseas": OVERSEAS, "trends": TRENDS, "articles": arts, "occasions": json.load(open("holidays.json"))}
+            "cats": CATS, "overseas": OVERSEAS, "trends": TRENDS, "articles": arts, "occasions": jload("holidays.json", [])}
     sig = hashlib.sha1(json.dumps([[a["l"], a["cached"]] for a in arts] + [[x["n"], x["ok"]] for x in status]).encode()).hexdigest(); data["sig"] = sig
     pu = prev.get("updated")
     if prev.get("sig") == sig and pu and (NOW - datetime.fromisoformat(pu)).total_seconds() < 6 * 3600 and not os.environ.get("DD_OUT"):
         print("no new stories; page left unchanged (avoids hourly commit noise)"); return
+    tpl = open("template.html", encoding="utf-8").read()
+    if "__DATA__" not in tpl or not tpl.lstrip().lower().startswith("<!doctype html"):
+        raise SystemExit("template.html is not the page template (it should start with <!doctype html> and contain __DATA__). Live page left unchanged.")
     blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     out = os.environ.get("DD_OUT", "docs/index.html"); os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
-    open(out, "w", encoding="utf-8").write(open("template.html", encoding="utf-8").read().replace("__DATA__", blob).replace("__TITLE__", html.escape(CFG["title"])))
+    open(out, "w", encoding="utf-8").write(tpl.replace("__DATA__", blob).replace("__TITLE__", html.escape(CFG["title"])))
     print("done:", len(arts), "stories,", ok, "sources ok,", len(failed), "failed")
 
 if __name__ == "__main__":
