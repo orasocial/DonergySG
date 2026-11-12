@@ -3,70 +3,100 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FAF7F2;--card:#fff;--red:#C82025;--gold:#C49A45;--ink:#242424;--mut:#67615C;--line:#E7DFD3}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 Poppins,system-ui,sans-serif}
-.wrap{max-width:1200px;margin:0 auto;padding:0 20px}a{color:inherit}:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-header{background:#fff;border-bottom:1px solid var(--line)}header:after{content:"";display:block;height:5px;background:repeating-linear-gradient(135deg,var(--red) 0 10px,var(--gold) 10px 20px)}
-.top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:flex-end;padding:18px 0}
-.brand{font:400 42px/1 Anton,Impact,sans-serif;margin:0}.brand span{color:var(--red)}.sub{margin:4px 0 0;color:var(--mut)}.upd{font-size:13px;color:var(--mut);text-align:right;margin:0}.upd b{color:var(--ink)}
-h2{font:400 24px/1.1 Anton,Impact,sans-serif;letter-spacing:.4px;margin:28px 0 12px}.h2r{display:flex;justify-content:space-between;align-items:center;gap:10px}.h2r h2{margin:28px 0 12px}
-button{font:500 14px Poppins,sans-serif;cursor:pointer;color:var(--ink)}
-.btn{padding:7px 14px;border:1px solid var(--line);background:#fff;border-radius:99px}.btn:hover{border-color:var(--red)}.btn.p{background:var(--red);border-color:var(--red);color:#fff}
-.warn{background:#FFF6DD;border:1px solid var(--gold);border-radius:10px;padding:9px 14px;margin:12px 0;font-size:14px}
-details.st{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:12px 0;font-size:14px}details.st summary{cursor:pointer;font-weight:500}
-.st ul{margin:8px 0 0;padding:0;list-style:none}.st li{padding:4px 0;border-top:1px solid var(--line)}.bad{color:var(--red);font-weight:600}
-.carw{position:relative}.occ{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:thin}
-.nav{display:flex;gap:6px}.nav button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:18px;line-height:1}.nav button:hover{border-color:var(--red)}
-.o{flex:0 0 230px;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:3px}
-.o.soon{border:2px solid var(--red)}.o b{font-weight:600;line-height:1.3}.o small{color:var(--mut)}.o .note{font-size:13px}
-.chip{display:inline-block;font-size:11px;font-weight:600;padding:1px 9px;border-radius:99px;border:1px solid var(--gold);width:fit-content}.chip.s{background:var(--red);border-color:var(--red);color:#fff}.chip.g{background:#FFF6DD}
-.dleft{font:400 22px Anton,Impact,sans-serif;color:var(--red)}.o .acts{margin-top:auto;display:flex;gap:10px;font-size:13px}.lk{background:none;border:0;padding:0;color:var(--red);font-size:13px;text-decoration:underline}
-.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0 14px}.bar input{flex:1 1 240px;padding:10px 14px;border:1px solid var(--line);border-radius:99px;font:inherit;background:#fff}
-.f{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}.f .sep{width:1px;background:var(--line);margin:0 4px}
-.f button,.sv{padding:7px 14px;border:1px solid var(--line);background:#fff;border-radius:99px}.f button:hover,.sv:hover{border-color:var(--red)}
-[aria-pressed=true].fb,.sv[aria-pressed=true]{background:var(--red);border-color:var(--red);color:#fff}.fb.os[aria-pressed=false]{border-style:dashed}
-.feat{display:grid;grid-template-columns:200px 1fr;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:18px}
-.feat .tx{padding:16px 20px;display:flex;flex-direction:column;gap:6px}.feat h3{font:600 20px/1.3 Poppins;margin:0}
-.feat>img,.feat>.ph{height:100%;min-height:140px;width:100%;object-fit:cover}
-.trow .card{flex:0 0 250px;scroll-snap-align:start}.trow .card h3{font-size:14.5px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}.card:hover{border-color:var(--red)}
-.card>img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
-.ph{display:flex;align-items:center;gap:10px;padding:0 14px;height:44px;font:400 15px Anton,Impact,sans-serif;letter-spacing:.5px;color:var(--red);background:repeating-linear-gradient(135deg,#FFF3E6 0 10px,#FBE9D2 10px 20px);border-bottom:1px solid var(--line)}
-.feat .ph{height:100%;min-height:100px;justify-content:center;border:0}.ph i{width:10px;height:10px;border-radius:50%;background:var(--gold)}
-.card .tx{padding:12px 16px 14px;display:flex;flex-direction:column;gap:7px;flex:1}.card h3{font:600 16px/1.35 Poppins;margin:0;padding-right:30px}
-.meta{font-size:12.5px;color:var(--mut)}.tags{display:flex;flex-wrap:wrap;gap:6px}
-.wm{font-size:13.5px;border-left:3px solid var(--gold);padding-left:9px}.wm b{font-weight:600}
-.idea{font-size:13.5px;background:#FFF6DD;border-radius:8px;padding:7px 10px}.idea b{color:var(--red);font-weight:600}.idea em{color:var(--mut);font-size:12px}
+:root{--red:#8F1823;--bg:#FAF7F2;--ink:#242424;--mut:#67615C;--gold:#C49A45;--line:#E6DED2;--tint:#F5EEE3}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:12px}body{margin:0;background:var(--bg);color:var(--ink);font:400 15.5px/1.55 Poppins,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}.w{max-width:1260px;margin:0 auto;padding:0 28px}:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+button{font:500 14.5px Poppins,sans-serif;cursor:pointer;color:var(--ink)}svg{display:block}
+.geo{position:absolute;color:var(--gold);opacity:.4;pointer-events:none}
+header{background:#fff;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hd{display:flex;align-items:center;gap:20px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+.brand{font:400 40px/1 Anton,Impact,sans-serif;color:var(--red);margin:0;letter-spacing:.5px}
+.tag{margin:0;font-size:14px;line-height:1.35;color:var(--mut);border-left:1px solid var(--line);padding-left:16px;white-space:nowrap}
+nav{margin-left:auto;display:flex;gap:6px}nav button{background:none;border:0;border-bottom:3px solid transparent;padding:8px 14px;font-weight:500;display:flex;gap:8px;align-items:center}
+nav button[aria-current=true]{color:var(--red);border-color:var(--red)}nav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px;font-size:14px;color:var(--mut)}
+.bar b{color:var(--ink);font-weight:500}.pill,.btn{display:inline-flex;gap:8px;align-items:center;padding:7px 16px;border:1px solid var(--line);background:#fff;border-radius:99px}
+.btn{color:var(--red);border-color:var(--red)}.btn:hover,.pill:hover{background:var(--tint)}.btn.p{background:var(--red);color:#fff}.btn.p:hover{background:#74121b}
+.dot{width:9px;height:9px;border-radius:50%;background:#2E8B57}.dot.w1{background:var(--gold)}.dot.w2{background:var(--red)}
+.diag{background:#fff;border:1px solid var(--line);border-radius:12px;margin:0 28px 10px;padding:12px 18px;font-size:14px}.diag[hidden]{display:none}
+.diag ul{list-style:none;margin:6px 0 0;padding:0;columns:2 300px}.diag li{padding:3px 0;break-inside:avoid}.bad{color:var(--red);font-weight:600}
+.notice{margin:0 28px 10px;background:#FFF6DD;border:1px solid var(--gold);border-radius:10px;padding:8px 14px;font-size:14px}
+.ban{background:var(--red);color:#fff;position:relative;overflow:hidden}.ban .w{display:flex;gap:24px;align-items:center;padding-top:13px;padding-bottom:13px;flex-wrap:wrap}
+.ban h2{font:400 28px/1.1 Anton,Impact,sans-serif;margin:0;letter-spacing:.5px}.ban p{margin:0;font-style:italic;font-size:15px;border-left:1px solid rgba(255,255,255,.35);padding-left:24px}
+h2.s{font:400 30px/1.1 Anton,Impact,sans-serif;text-transform:uppercase;margin:0 0 18px;padding-bottom:10px;position:relative;letter-spacing:.3px}h2.s:after{content:"";position:absolute;left:0;bottom:0;width:44px;height:3px;background:var(--gold)}
+.sec{margin-top:36px}.sh{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}.sh p{margin:0 0 18px;color:var(--mut);font-style:italic}
+.top{display:grid;grid-template-columns:2fr 1fr;gap:28px;align-items:start;margin-top:34px}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px}
+.feat{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);overflow:hidden}.feat.noimg{grid-template-columns:1fr}.feat>img{width:100%;height:100%;min-height:260px;object-fit:cover}
+.fx{padding:22px 24px;display:flex;flex-direction:column;gap:12px}.fx h3{font:600 24px/1.25 Poppins,sans-serif;margin:0}
+.meta{font-size:13.5px;color:var(--mut)}.tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{font-size:12.5px;font-weight:500;padding:2px 11px;border-radius:99px;border:1px solid var(--red);color:var(--red);background:#fff}.chip.g{border-color:var(--gold);color:#7A5C1E;background:#FBF4E4}.more2{font-size:12.5px;color:var(--mut)}
+.why{font-size:15px}.why b{color:var(--red);font-weight:600}.ang{background:#FBF4E4;border-radius:10px;padding:10px 14px;font-size:14.5px}.ang b{font-weight:600}.ang em{display:block;color:var(--mut);font-size:12.5px;margin-top:2px}
+.acts{display:flex;gap:10px;align-items:center;margin-top:4px}.bm{width:42px;height:42px;border:1px solid var(--line);background:#fff;border-radius:10px;display:grid;place-items:center;color:var(--red)}.bm:hover{border-color:var(--red)}
+.bm svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}.bm[aria-pressed=true]{background:var(--red);color:#fff;border-color:var(--red)}.bm[aria-pressed=true] svg{fill:currentColor}
+.rd{text-decoration:none;font-weight:500}.rd.btn{color:#fff;background:var(--red);border-color:var(--red);padding:9px 22px;border-radius:10px}.rd.btn:hover{background:#74121b}
+.up{padding:22px 22px 14px}.up h2.s{margin-bottom:14px}.o{display:grid;grid-template-columns:58px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--line)}.o:first-of-type{border-top:0}
+.db{background:var(--tint);border-radius:10px;text-align:center;padding:6px 0;line-height:1}.db b{display:block;font:400 26px Anton,Impact,sans-serif}.db span{font:400 13px Anton,sans-serif;color:var(--red);letter-spacing:.5px}
+.o h3{margin:0;font:600 16px/1.3 Poppins;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}.o p{margin:2px 0 0;font-size:14px;color:var(--mut)}
+.lk{background:none;border:0;padding:0;color:var(--red);font-size:13.5px;text-decoration:underline}.o .ac{display:flex;gap:14px;margin-top:4px;font-size:13.5px;align-items:center}.o .ac a{color:var(--red)}
+.up .foot{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:12px 0 4px}.ol{max-height:340px;overflow:auto}
+.sb{position:relative}.sb input{width:100%;padding:13px 18px 13px 46px;border:1px solid var(--line);border-radius:99px;font:inherit;background:#fff}.sb svg{position:absolute;left:16px;top:13px;width:20px;height:20px;fill:none;stroke:var(--mut);stroke-width:2}
+.f{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0 8px}.f button{padding:8px 18px;border:1px solid var(--line);background:#fff;border-radius:99px}.f button:hover{border-color:var(--red)}.f button[aria-pressed=true]{background:var(--red);border-color:var(--red);color:#fff}.f .sep{width:1px;background:var(--line);margin:0 4px}
+.cnt{font-size:13.5px;color:var(--mut);margin:6px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
+.card{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}.card:hover{border-color:var(--gold)}
+.card>img{width:100%;height:150px;object-fit:cover;display:block}.cb{padding:14px 16px 14px;display:flex;flex-direction:column;gap:8px}
+.card h3{font:600 17px/1.35 Poppins,sans-serif;margin:0;padding-right:44px}.card .bm{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%}.card>img~.bm{background:#fff}
+.ex{font-size:14.5px;color:#4a4540;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.hl{font-size:13px;color:var(--mut);font-style:italic}
+details.an{background:var(--tint);border-radius:10px}.an summary{cursor:pointer;padding:9px 12px;font-size:14px;font-weight:500;color:var(--red)}.an div{padding:0 12px 11px;font-size:14px}.an em{display:block;color:var(--mut);font-size:12.5px;margin-top:3px}
 .rel{font-size:13px}.rel summary{cursor:pointer;color:var(--mut)}.rel a{display:block;padding:2px 0}
-.rd{margin-top:auto;font-weight:600;font-size:14px;color:var(--red);text-decoration:none}.rd:hover{text-decoration:underline}
-.bm{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:17px;line-height:1}.bm[aria-pressed=true]{background:var(--red);color:#fff;border-color:var(--red)}
-.state{padding:36px 20px;text-align:center;color:var(--mut);background:#fff;border:1px dashed var(--line);border-radius:12px;grid-column:1/-1}
-.more{display:block;margin:20px auto;padding:9px 24px;border:1px solid var(--red);color:var(--red);background:#fff;border-radius:99px}.more[hidden]{display:none}
-dialog{border:1px solid var(--line);border-radius:14px;padding:20px;max-width:380px;width:92%}dialog::backdrop{background:rgba(0,0,0,.35)}
-dialog label{display:block;font-size:13px;margin:10px 0 2px;font-weight:500}dialog input,dialog textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit}dialog .r{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
-footer{text-align:center;color:var(--mut);font-size:13px;padding:26px 20px}
-@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:640px){.grid{grid-template-columns:1fr}.brand{font-size:34px}.upd{text-align:left}.feat{grid-template-columns:1fr}.feat>img{height:150px}.feat .ph{min-height:44px}.o{flex-basis:78%}.trow .card{flex-basis:80%}.nav button{width:32px;height:32px}}
+.state{padding:30px 20px;text-align:center;color:var(--mut);background:#fff;border:1px dashed var(--line);border-radius:12px;grid-column:1/-1}
+.mo{display:block;margin:22px auto 0;padding:10px 28px;border:1px solid var(--red);color:var(--red);background:#fff;border-radius:99px}.mo[hidden]{display:none}
+.scr{position:relative}.row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 10px;scrollbar-width:thin}.row .card{flex:0 0 280px;scroll-snap-align:start}
+.nv{display:flex;gap:6px}.nv[hidden]{display:none}.nv button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff}
+.sub{font-size:15px;font-weight:600;margin:0 0 10px;display:flex;justify-content:space-between;align-items:center}
+.ev{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.ev .box{padding:18px 20px;background:linear-gradient(#fff,var(--tint))}.ev h3{font:400 21px Anton,Impact,sans-serif;text-transform:uppercase;margin:6px 0;display:flex;gap:12px;align-items:center;color:var(--red)}
+.ev svg{width:34px;height:34px;fill:none;stroke:var(--red);stroke-width:1.6}.ev p{margin:0}.ev small{color:var(--mut);display:block;margin-top:8px;font-size:12.5px}
+footer .fn{padding-right:110px}@media(max-width:700px){footer .fn{padding-right:16px}}footer{background:var(--red);color:#fff;margin-top:48px;position:relative;overflow:hidden}.ft{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;padding-top:20px;padding-bottom:16px}.ft b{font:400 26px Anton,Impact,sans-serif;letter-spacing:.5px}.ft i{font-size:14px}
+.ft nav{margin-left:auto}.ft nav button{color:#fff;border:0;padding:6px 10px}.ft nav button[aria-current=true]{color:#fff;border-color:var(--gold)}
+.fn{border-top:1px solid rgba(255,255,255,.25);padding-top:12px;padding-bottom:18px;font-size:13px;line-height:1.5;opacity:.92;margin-top:0}
+dialog{border:1px solid var(--line);border-radius:14px;padding:22px;max-width:400px;width:92%}dialog::backdrop{background:rgba(0,0,0,.35)}dialog h3{margin:0;font:400 24px Anton}
+dialog label{display:block;font-size:14px;margin:12px 0 3px;font-weight:500}dialog input,dialog textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font:inherit}dialog .r{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:99px;font-size:14px;z-index:9;max-width:92%}
+@media(max-width:1000px){.top{grid-template-columns:1fr}.grid,.ev{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.w{padding-left:16px;padding-right:16px}header .geo,.ban .geo{display:none}nav svg{display:none}nav button{white-space:nowrap;font-size:14px}.diag,.notice{margin-left:16px;margin-right:16px}.brand{font-size:32px}.tag{display:none}
+nav{margin:0;width:100%;justify-content:space-between}nav button{padding:8px 6px;font-size:14px;flex:1;justify-content:center}.grid,.ev{grid-template-columns:1fr}.feat{grid-template-columns:1fr}.feat>img{min-height:0;height:190px}
+.ban h2{font-size:23px}.ban p{border:0;padding:0;font-size:14px}h2.s{font-size:26px}.row .card{flex-basis:84%}.fx{padding:18px}.fx h3{font-size:20px}.ft nav{margin:0;width:100%}.pill,.btn{padding:8px 14px}.bm{width:44px;height:44px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style></head><body>
-<header><div class="wrap top"><div><h1 class="brand">DONERGY <span>DAILY</span></h1><p class="sub" id="sub"></p></div><p class="upd" id="upd"></p></div></header>
-<main class="wrap">
-<div id="warn"></div><details class="st" id="st"></details>
-<div class="h2r"><h2>Upcoming occasions</h2><div class="nav"><button class="btn p" id="addo" style="width:auto;border-radius:99px;font-size:13px;padding:0 12px">+ Add</button><button id="pv" aria-label="Previous occasions">‹</button><button id="nx" aria-label="Next occasions">›</button></div></div>
-<div class="occ" id="occ" tabindex="0" aria-label="Upcoming occasions. Use arrow keys to scroll"></div>
-<div id="featbox"></div>
-<div class="h2r"><h2>Trends &amp; memes</h2><div class="nav"><button id="tp" aria-label="Previous trends">‹</button><button id="tn" aria-label="Next trends">›</button></div></div>
-<div class="occ trow" id="trow" tabindex="0" aria-label="Trends and memes. Use arrow keys to scroll"></div>
-<h2>Latest stories</h2>
-<div class="bar"><label for="q" style="position:absolute;left:-9999px">Search stories</label><input id="q" type="search" placeholder="Search stories or publishers"><button class="sv" id="sv" aria-pressed="false"></button></div>
-<div class="f" id="f" role="group" aria-label="Filter stories"></div>
-<div id="grid" class="grid"><p class="state">Loading stories…</p></div>
-<button class="more" id="more" hidden>Show more</button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="st" viewBox="0 0 60 60"><g fill="none" stroke="currentColor" stroke-width="1.2"><rect x="12" y="12" width="36" height="36"/><rect x="12" y="12" width="36" height="36" transform="rotate(45 30 30)"/><circle cx="30" cy="30" r="9"/><circle cx="30" cy="30" r="3"/></g></symbol></defs></svg>
+<header><svg class="geo" style="left:-26px;top:-26px;width:90px" aria-hidden="true"><use href="#st"/></svg>
+<div class="w hd"><h1 class="brand">DONERGY DAILY</h1><p class="tag" id="tag"></p>
+<nav aria-label="Main"><button data-go="discover" aria-current="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>Discover</button><button data-go="saved"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span id="navs">Saved stories</span></button><button data-go="occ"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Occasions</button></nav></div>
+<div style="border-top:1px solid var(--line)"><div class="bar w"><div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center"><span id="upd"></span><button class="btn" id="rf" title="Reloads the latest published data. New stories are gathered by the hourly update.">↻ Refresh</button></div><button class="pill" id="sp" aria-expanded="false" aria-controls="dg"></button></div></div></header>
+<div class="diag" id="dg" hidden></div><div id="nt"></div>
+<div class="ban"><svg class="geo" style="right:10px;top:-14px;width:96px" aria-hidden="true"><use href="#st"/></svg><svg class="geo" style="right:70px;bottom:-30px;width:70px" aria-hidden="true"><use href="#st"/></svg>
+<div class="w"><h2>YOUR NEXT GOOD IDEA STARTS HERE.</h2><p>Singapore food news, local happenings and inspiration for Donergy.</p></div></div>
+<main class="w" id="discover">
+<div class="top"><section aria-labelledby="h-f"><h2 class="s" id="h-f">Worth your attention</h2><div id="featbox"></div></section>
+<aside class="box up" id="occ" aria-labelledby="h-o"><h2 class="s" id="h-o">Coming up</h2><div id="ol"></div><div class="foot"><button class="lk" id="va"></button><button class="lk" id="addo">+ Add occasion</button></div></aside></div>
+<section class="sec" id="stories" aria-labelledby="h-s"><div class="sh"><h2 class="s" id="h-s">Latest stories</h2><p>Gathered from the sources below. Links open the original publisher.</p></div>
+<div class="sb"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><label for="q" style="position:absolute;left:-9999px">Search stories</label><input id="q" type="search" placeholder="Search stories, topics or ideas (e.g. “halal dining”, “catering”)"></div>
+<div class="f" id="f" role="group" aria-label="Filter stories by category"></div><p class="cnt" id="cnt" aria-live="polite"></p>
+<div id="grid" class="grid"><p class="state">Loading stories…</p></div><button class="mo" id="more" hidden>Show more</button></section>
+<section class="sec" aria-labelledby="h-t"><div class="sh"><h2 class="s" id="h-t">Trends &amp; inspiration</h2><p>Practical content ideas to keep Donergy’s feeds fresh and relevant.</p></div>
+<div class="sub"><span>Trending now <small style="font-weight:400;color:var(--mut)">· from our sources</small></span><div class="nv" id="tnv" hidden><button id="tp" aria-label="Previous trends">‹</button><button id="tn" aria-label="Next trends">›</button></div></div>
+<div class="row" id="trow" tabindex="0" aria-label="Trending now. Use arrow keys to scroll"></div>
+<div class="sub" style="margin-top:22px"><span>Evergreen ideas <small style="font-weight:400;color:var(--mut)">· always useful, not current trends</small></span></div>
+<div class="ev"><div class="box"><h3><svg viewBox="0 0 24 24"><path d="M3 18h18M5 18a7 7 0 0114 0M12 8V6M10 6h4"/></svg>Service moments</h3><p>Capture the hospitality, conversations and small gestures that make the Donergy experience special.</p><small>Evergreen idea</small></div>
+<div class="box"><h3><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 7l1.5-2h5L16 7"/></svg>Food close-ups</h3><p>Showcase the textures, freshness and preparation of your signature dishes (e.g. doner, mezze, grills).</p><small>Evergreen idea</small></div>
+<div class="box"><h3><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M15 15c3 0 6 1 6 4"/></svg>Team stories</h3><p>Put a face to the brand by featuring the people behind great food and service at Donergy.</p><small>Evergreen idea</small></div></div></section>
 </main>
-<footer id="foot"></footer>
-<dialog id="dlg"><form method="dialog" id="fm"><h3 style="margin:0;font:400 20px Anton">Occasion</h3>
-<label for="on">Name</label><input id="on" required maxlength="60"><label for="od">Date</label><input id="od" type="date" required>
-<label for="ot">Planning note</label><textarea id="ot" rows="3" maxlength="200"></textarea>
-<label><input type="checkbox" id="oy" style="width:auto"> Repeats every year</label><label><input type="checkbox" id="oc" style="width:auto"> Date is confirmed</label>
+<footer><svg class="geo" style="right:8px;top:-20px;width:84px" aria-hidden="true"><use href="#st"/></svg><svg class="geo" style="right:80px;bottom:-26px;width:64px" aria-hidden="true"><use href="#st"/></svg>
+<div class="ft w"><b>DONERGY DAILY</b><i>Fresh news. Better content ideas.</i><nav aria-label="Footer"><button data-go="discover">Discover</button><button data-go="saved">Saved stories</button><button data-go="occ">Occasions</button></nav></div>
+<p class="fn w">Stories belong to their original publishers and link back to them. Saved stories and custom occasions are stored only in this browser (localStorage). They do not sync to other devices and are lost if browser data is cleared.</p></footer>
+<dialog id="dlg"><form method="dialog" id="fm"><h3>Occasion</h3><label for="on">Name</label><input id="on" required maxlength="60"><label for="od">Date</label><input id="od" type="date" required>
+<label for="ot">Planning note</label><textarea id="ot" rows="3" maxlength="200"></textarea><label><input type="checkbox" id="oy" style="width:auto"> Repeats every year</label><label><input type="checkbox" id="oc" style="width:auto"> Date is confirmed</label>
 <div class="r"><button type="button" class="btn" id="oq">Cancel</button><button class="btn p" id="os">Save</button></div></form></dialog>
 <script id="data" type="application/json">__DATA__</script>
 <script>
@@ -74,89 +104,85 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:26px 20px}
 var $=function(s){return document.querySelector(s)};
 function h(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 var D;try{D=JSON.parse($('#data').textContent)}catch(e){$('#grid').innerHTML='<p class="state">Sorry, the story data could not be loaded.</p>';return}
-var TZ='Asia/Singapore',S={q:'',cat:'All',saved:false,n:30},SAVED={},OC={custom:[],edits:{},removed:[]};
-try{SAVED=JSON.parse(localStorage.getItem('dd_saved')||'{}')}catch(e){}
-try{OC=Object.assign(OC,JSON.parse(localStorage.getItem('dd_occ')||'{}'))}catch(e){}
+var TZ='Asia/Singapore',S={q:'',cat:'All',saved:false,n:24},SAVED={},OC={custom:[],edits:{},removed:[]},ALL=false;
+try{SAVED=JSON.parse(localStorage.getItem('dd_saved')||'{}')}catch(e){}try{OC=Object.assign(OC,JSON.parse(localStorage.getItem('dd_occ')||'{}'))}catch(e){}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 function fd(i,o){return new Date(i).toLocaleDateString('en-SG',Object.assign({day:'numeric',month:'short',year:'numeric',timeZone:TZ},o||{}))}
-function ft(i){return new Date(i).toLocaleString('en-SG',{dateStyle:'medium',timeStyle:'short',timeZone:TZ})+' SGT'}
-$('#sub').textContent=D.cfg.subtitle;
-var up=D.updated?Date.parse(D.updated):0;
-$('#upd').innerHTML=up?'Stories last updated · checked hourly<br><b>'+ft(up)+'</b>':'Not refreshed yet';
-var w=$('#warn'),bad=(D.sources||[]).filter(function(s){return!s.ok});
-if(!up||Date.now()-up>18*36e5)w.appendChild(h('div','warn','Showing cached stories. The feed has not refreshed since '+(up?ft(up):'it was set up')+'. Article dates show when each story was published.'));
-else if(D.failed>0)w.appendChild(h('div','warn',D.failed+' of '+(D.sources||[]).length+' sources failed in the latest refresh. Their cached stories are marked "Cached" and the rest are up to date.'));
-var st=$('#st');st.appendChild(h('summary',0,'Source status: '+D.ok+' OK, '+D.failed+' failed'));var ul=h('ul');
-(D.sources||[]).slice().sort(function(a,b){return a.ok-b.ok}).forEach(function(s){var li=h('li');
- li.appendChild(h('span',s.ok?'':'bad',(s.ok?'OK  ':'Failed  ')+s.n));
- if(!s.ok)li.appendChild(h('span',0,' · '+(s.why||'No reason given')+(s.lastOk?' · showing cached stories from '+ft(s.lastOk):'')));ul.appendChild(li)});st.appendChild(ul);if(bad.length)st.open=true;
-/* ---- occasions ---- */
-var oc=$('#occ');
+function ft(i){return new Date(i).toLocaleString('en-SG',{day:'numeric',month:'short',year:'numeric',hour:'numeric',minute:'2-digit',hour12:true,timeZone:TZ})+' SGT'}
+function toast(m){var t=h('div','toast',m);t.setAttribute('role','status');document.body.appendChild(t);setTimeout(function(){t.remove()},5000)}
+$('#tag').innerHTML='Fresh news.<br>Better content ideas.';
+/* status */
+var up=D.updated?Date.parse(D.updated):0,at=D.attempted?Date.parse(D.attempted):0,src=D.sources||[],LO={};src.forEach(function(s){LO[s.n]=s.lastOk});
+$('#upd').innerHTML=up?'Updated <b>'+ft(up)+'</b>'+(at&&(at-up>6e5||!D.ok)?' · last check '+ft(at)+(D.ok?'':' (failed)'):''):'Not updated yet';
+var sp=$('#sp');sp.innerHTML='';sp.appendChild(h('span','dot'+(D.ok?(D.failed?' w1':''):' w2')));sp.appendChild(h('span',0,D.ok+' source'+(D.ok===1?'':'s')+' active'+(D.failed?' · '+D.failed+' need attention':'')));sp.appendChild(h('span',0,'▾'));
+var dg=$('#dg');dg.appendChild(h('p',0,'Each source is checked on its own. Stories from a source that failed are kept and marked “Cached” with the date of its last successful fetch.'));var ul=h('ul');
+src.slice().sort(function(a,b){return a.ok-b.ok}).forEach(function(s){var li=h('li');li.appendChild(h('span',s.ok?'':'bad',(s.ok?'OK · ':'Needs attention · ')+s.n));if(!s.ok)li.appendChild(h('span',0,' · '+(s.why||'No reason given')+(s.lastOk?' · cached from '+ft(s.lastOk):'')));ul.appendChild(li)});dg.appendChild(ul);
+sp.onclick=function(){var o=dg.hidden;dg.hidden=!o;sp.setAttribute('aria-expanded',o)};
+if(!up||!D.ok||Date.now()-up>18*36e5)$('#nt').appendChild(h('div','notice','Showing cached stories. They may be out of date: the last successful update was '+(up?ft(up):'never')+'.'));
+$('#rf').onclick=function(){try{sessionStorage.setItem('dd_rf','1')}catch(e){}location.href=location.pathname+'?r='+Date.now()};
+try{if(sessionStorage.getItem('dd_rf')){sessionStorage.removeItem('dd_rf');history.replaceState(null,'',location.pathname);toast('Reloaded the latest published data. New stories are gathered by the hourly update, not by this button.')}}catch(e){}
+/* occasions */
 function today(){return Date.parse(new Date().toLocaleDateString('en-CA',{timeZone:TZ})+'T00:00:00+08:00')}
-function nextDate(o){var d=o.date;if(!d&&o.md){var y=new Date(today()+288e5).getUTCFullYear();d=y+'-'+o.md;if(Date.parse(d+'T00:00:00+08:00')<today())d=(y+1)+'-'+o.md}
- if(!d)return null;var t=Date.parse(d+'T00:00:00+08:00');
- if(t<today()&&(o.yearly)){var p=d.slice(5),y2=new Date(today()+288e5).getUTCFullYear();d=y2+'-'+p;if(Date.parse(d+'T00:00:00+08:00')<today())d=(y2+1)+'-'+p;t=Date.parse(d+'T00:00:00+08:00')}
- return t<today()?null:{d:d,t:t}}
+function yr(){return new Date(today()+288e5).getUTCFullYear()}
+function nextDate(o){var d=o.date;if(!d&&o.md){d=yr()+'-'+o.md;if(Date.parse(d+'T00:00:00+08:00')<today())d=(yr()+1)+'-'+o.md}
+ if(!d)return null;var t=Date.parse(d+'T00:00:00+08:00');if(t<today()&&o.yearly){var p=d.slice(5);d=yr()+'-'+p;if(Date.parse(d+'T00:00:00+08:00')<today())d=(yr()+1)+'-'+p;t=Date.parse(d+'T00:00:00+08:00')}return t<today()?null:{d:d,t:t}}
 var dlgO=null;
-function drawOcc(){oc.innerHTML='';var all=D.occasions.filter(function(o){return OC.removed.indexOf(o.id)<0}).map(function(o){return Object.assign({},o,OC.edits[o.id]||{})}).concat(OC.custom.map(function(o){return Object.assign({tag:'Custom',custom:true},o)}));
+function drawOcc(){var ol=$('#ol');ol.innerHTML='';ol.className=ALL?'ol':'';
+ var all=D.occasions.filter(function(o){return OC.removed.indexOf(o.id)<0}).map(function(o){return Object.assign({},o,OC.edits[o.id]||{})}).concat(OC.custom.map(function(o){return Object.assign({tag:'Custom',custom:true},o)}));
  var rows=all.map(function(o){var n=nextDate(o);return n&&{o:o,n:n}}).filter(Boolean).sort(function(a,b){return a.n.t-b.n.t});
- rows.slice(0,14).forEach(function(r){var o=r.o,left=Math.round((r.n.t-today())/864e5),c=h('div','o'+(left<=30?' soon':''));
-  var t=h('div','tags');t.appendChild(h('span','chip'+(left<=30?' s':''),o.tag));if(o.confirm)t.appendChild(h('span','chip g','To confirm'));if(o.est)t.appendChild(h('span','chip g','Estimated'));c.appendChild(t);
-  c.appendChild(h('b',0,o.name));c.appendChild(h('small',0,fd(r.n.d+'T00:00:00+08:00',{weekday:'short'})));
-  c.appendChild(h('span','dleft',left===0?'Today':left+(left===1?' day':' days')));
-  if(o.note)c.appendChild(h('span','note',o.note));
-  if(o.src){var s=h('small',0,o.src+' ');if(o.url){var a=h('a',0,'Source ↗');a.href=o.url;a.target='_blank';a.rel='noopener noreferrer';s.appendChild(a)}c.appendChild(s)}
-  var ac=h('div','acts');
+ rows.slice(0,ALL?30:3).forEach(function(r){var o=r.o,left=Math.round((r.n.t-today())/864e5),c=h('div','o'),db=h('div','db');
+  var dt=new Date(r.n.d+'T00:00:00+08:00');db.appendChild(h('b',0,dt.toLocaleDateString('en-SG',{day:'numeric',timeZone:TZ})));db.appendChild(h('span',0,dt.toLocaleDateString('en-SG',{month:'short',timeZone:TZ}).toUpperCase()));c.appendChild(db);
+  var b=h('div'),t=h('h3',0,o.name);if(o.confirm)t.appendChild(h('span','chip g','Confirm date'));if(o.est)t.appendChild(h('span','chip g','Estimated'));b.appendChild(t);
+  b.appendChild(h('p',0,(left===0?'Today':left===1?'Tomorrow':'In '+left+' days')+(o.note?' · '+o.note:'')));
+  var ac=h('div','ac');if(o.src){var s=h('span','meta',o.src+' ');if(o.url){var a=h('a',0,'Source ↗');a.href=o.url;a.target='_blank';a.rel='noopener noreferrer';s.appendChild(a)}ac.appendChild(s)}
   if(o.editable||o.custom){var e=h('button','lk','Edit');e.onclick=function(){openD(o)};ac.appendChild(e)}
   if(o.custom){var x=h('button','lk','Remove');x.onclick=function(){OC.custom=OC.custom.filter(function(z){return z.id!==o.id});save('dd_occ',OC);drawOcc()};ac.appendChild(x)}
-  c.appendChild(ac);oc.appendChild(c)})}
+  if(ac.children.length)b.appendChild(ac);c.appendChild(b);ol.appendChild(c)});
+ if(!rows.length)ol.appendChild(h('p','meta','No upcoming occasions. Add one below.'));
+ var va=$('#va');va.textContent=ALL?'Show fewer':'View all occasions ('+rows.length+')';va.hidden=rows.length<=3}
 function openD(o){dlgO=o||null;$('#on').value=o?o.name:'';$('#od').value=o?(nextDate(o)||{d:o.date||''}).d:'';$('#ot').value=o&&o.note||'';$('#oy').checked=!!(o&&o.yearly);$('#oc').checked=!(o&&o.confirm);$('#dlg').showModal()}
-$('#addo').onclick=function(){openD(null)};$('#oq').onclick=function(){$('#dlg').close()};
+$('#addo').onclick=function(){openD(null)};$('#oq').onclick=function(){$('#dlg').close()};$('#va').onclick=function(){ALL=!ALL;drawOcc()};
 $('#fm').onsubmit=function(){var v={name:$('#on').value.trim(),date:$('#od').value,note:$('#ot').value.trim(),yearly:$('#oy').checked,confirm:!$('#oc').checked};if(!v.name||!v.date)return;
- if(dlgO&&!dlgO.custom){OC.edits[dlgO.id]=v;delete OC.edits[dlgO.id].md}
- else if(dlgO){OC.custom=OC.custom.map(function(z){return z.id===dlgO.id?Object.assign({id:z.id},v):z})}
- else OC.custom.push(Object.assign({id:'c'+Date.now()},v));save('dd_occ',OC);drawOcc()};
-function sc(d){oc.scrollBy({left:d*oc.clientWidth*.8,behavior:'smooth'})}
-$('#pv').onclick=function(){sc(-1)};$('#nx').onclick=function(){sc(1)};
-oc.onkeydown=function(e){if(e.key==='ArrowRight'){sc(1);e.preventDefault()}if(e.key==='ArrowLeft'){sc(-1);e.preventDefault()}};
-function sct(d){$('#trow').scrollBy({left:d*$('#trow').clientWidth*.8,behavior:'smooth'})}$('#tp').onclick=function(){sct(-1)};$('#tn').onclick=function(){sct(1)};
-$('#trow').onkeydown=function(e){if(e.key==='ArrowRight'){sct(1);e.preventDefault()}if(e.key==='ArrowLeft'){sct(-1);e.preventDefault()}};
+ if(dlgO&&!dlgO.custom){OC.edits[dlgO.id]=v}else if(dlgO){OC.custom=OC.custom.map(function(z){return z.id===dlgO.id?Object.assign({id:z.id},v):z})}else OC.custom.push(Object.assign({id:'c'+Date.now()},v));save('dd_occ',OC);drawOcc()};
 drawOcc();
-/* ---- stories ---- */
-function ph(a){var p=h('div','ph');p.appendChild(h('i'));p.appendChild(h('span',0,a.c&&a.c[0]||'Story'));return p}
-function img(a){if(!a.i)return ph(a);var im=document.createElement('img');im.src=a.i;im.alt='';im.loading='lazy';im.referrerPolicy='no-referrer';im.onerror=function(){im.replaceWith(ph(a))};return im}
-function body(a,big){var t=h('div','tx'),g=h('div','tags');(a.c||[]).slice(0,3).forEach(function(c,i){g.appendChild(h('span','chip'+(i?' g':''),c))});
- if(a.cached)g.appendChild(h('span','chip g','Cached'));if(a.hl)g.appendChild(h('span','chip g','Headline only'));t.appendChild(g);
- t.appendChild(h('h3',0,a.t));t.appendChild(h('div','meta',(a.p||a.s)+' · '+fd(a.d)));
- if(a.e)t.appendChild(h('div','meta',a.e));else if(a.hl&&!big)t.appendChild(h('div','meta','Only the headline was available. Open the article for details.'));
- if(a.w){var m=h('div','wm');m.appendChild(h('b',0,'Why it matters: '));m.appendChild(document.createTextNode(a.w));t.appendChild(m)}
- if(a.x){var i=h('div','idea');i.appendChild(h('b',0,'Idea for Donergy: '));i.appendChild(document.createTextNode(a.x+' '));i.appendChild(h('em',0,'(our suggestion, not from the article)'));t.appendChild(i)}
- if(a.rel&&a.rel.length){var d=h('details','rel');d.appendChild(h('summary',0,'Also covered by '+a.rel.length+' other source'+(a.rel.length>1?'s':'')));a.rel.forEach(function(r){var l=h('a',0,r.s+': '+r.t);l.href=r.l;l.target='_blank';l.rel='noopener noreferrer';d.appendChild(l)});t.appendChild(d)}
- var r=h('a','rd','Read article →');r.href=a.l;r.target='_blank';r.rel='noopener noreferrer';t.appendChild(r);return t}
-function card(a,big){var c=h(big?'div':'article',big?'feat':'card');
- if(big){c.appendChild(img(a));c.appendChild(body(a,1));return c}
- if(a.i)c.appendChild(img(a));else c.appendChild(ph(a));
- var b=h('button','bm',SAVED[a.l]?'★':'☆');b.setAttribute('aria-pressed',!!SAVED[a.l]);b.setAttribute('aria-label',(SAVED[a.l]?'Unsave: ':'Save: ')+a.t);
- b.onclick=function(){if(SAVED[a.l])delete SAVED[a.l];else SAVED[a.l]=a;save('dd_saved',SAVED);draw()};c.appendChild(b);c.appendChild(body(a));return c}
-var F=$('#f'),FL=['All'].concat(D.cats);
-FL.concat([D.trends,D.overseas]).forEach(function(k){if(k===D.trends)F.appendChild(h('span','sep'));if(k===D.overseas)F.appendChild(h('span','sep'));var b=h('button','fb'+(k===D.overseas?' os':''),k);b.dataset.k=k;b.onclick=function(){S.cat=k;S.n=30;draw()};F.appendChild(b)});
-$('#q').oninput=function(e){S.q=e.target.value.toLowerCase();S.n=30;draw()};
-$('#sv').onclick=function(){S.saved=!S.saved;S.n=30;draw()};$('#more').onclick=function(){S.n+=30;draw()};
+/* stories */
+var BM='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>';
+function img(a,cls){if(!a.i)return null;var im=document.createElement('img');im.src=a.i;im.alt='';im.loading='lazy';im.referrerPolicy='no-referrer';im.onerror=function(){var p=im.parentNode;im.remove();if(p&&p.classList.contains('feat'))p.classList.add('noimg')};return im}
+function bm(a){var b=h('button','bm');b.innerHTML=BM;b.setAttribute('aria-pressed',!!SAVED[a.l]);b.setAttribute('aria-label',(SAVED[a.l]?'Unsave story: ':'Save story: ')+a.t);b.onclick=function(){if(SAVED[a.l])delete SAVED[a.l];else SAVED[a.l]=a;save('dd_saved',SAVED);draw()};return b}
+function cats(a){var g=h('div','tags'),c=a.c||[];if(c[0])g.appendChild(h('span','chip',c[0]));if(c.length>1){var m=h('span','more2','+'+(c.length-1)+' more');m.title=c.slice(1).join(', ');g.appendChild(m)}if(a.cached){var k=h('span','chip g','Cached');k.title='Last fetched '+(LO[a.s]?ft(LO[a.s]):'earlier');g.appendChild(k)}return g}
+function pubName(a){var p=a.p||'';if(/^https?:/.test(p)){try{p=new URL(p).hostname.replace(/^www\./,'')}catch(e){p=''}}if(p)return p;if(/^GNews/.test(a.s||''))return 'Google News';return a.s||''}
+function meta(a){return h('div','meta',pubName(a)+' · '+fd(a.d)+(a.cached&&LO[a.s]?' · cached from '+fd(LO[a.s]):''))}
+function angle(a,open){if(!a.x)return null;var d=document.createElement('div');d.className='ang';var b=h('b',0,'Content angle: ');d.appendChild(b);d.appendChild(document.createTextNode(a.x));d.appendChild(h('em',0,'Our suggestion, not from the article'));return d}
+function feat(a){var c=h('div','box feat'),im=img(a);if(im)c.appendChild(im);else c.className+=' noimg';var t=h('div','fx');t.appendChild(cats(a));t.appendChild(h('h3',0,a.t));t.appendChild(meta(a));
+ if(a.e)t.appendChild(h('div','ex',a.e));else t.appendChild(h('div','hl','Only the headline was available. Open the story for details.'));
+ if(a.w){var w=h('div','why');w.appendChild(h('b',0,'Why it matters: '));w.appendChild(document.createTextNode(a.w));t.appendChild(w)}
+ var an=angle(a);if(an)t.appendChild(an);var ac=h('div','acts'),r=h('a','rd btn','Read story');r.href=a.l;r.target='_blank';r.rel='noopener noreferrer';ac.appendChild(r);ac.appendChild(bm(a));t.appendChild(ac);c.appendChild(t);return c}
+function card(a){var c=h('article','card'),im=img(a);if(im)c.appendChild(im);var b=h('div','cb');b.appendChild(cats(a));
+ var hh=h('h3'),r=h('a',0,a.t);r.href=a.l;r.target='_blank';r.rel='noopener noreferrer';r.style.textDecoration='none';hh.appendChild(r);b.appendChild(hh);b.appendChild(meta(a));
+ if(a.e)b.appendChild(h('div','ex',a.e));else b.appendChild(h('div','hl','Headline only'));
+ if(a.x){var d=h('details','an');d.appendChild(h('summary',0,'View content angle'));var i=h('div',0,a.x);i.appendChild(h('em',0,'Our suggestion, not from the article'));d.appendChild(i);b.appendChild(d)}
+ if(a.rel&&a.rel.length){var dd=h('details','rel');dd.appendChild(h('summary',0,'Also covered by '+a.rel.length+' other source'+(a.rel.length>1?'s':'')));a.rel.forEach(function(x){var l=h('a',0,x.s+': '+x.t);l.href=x.l;l.target='_blank';l.rel='noopener noreferrer';dd.appendChild(l)});b.appendChild(dd)}
+ c.appendChild(b);c.appendChild(bm(a));return c}
+var F=$('#f');['All'].concat(D.cats,[D.trends,D.overseas]).forEach(function(k){var b=h('button','fb',k);b.dataset.k=k;b.onclick=function(){S.cat=k;S.saved=false;S.n=24;draw()};F.appendChild(b)});
+$('#q').oninput=function(e){S.q=e.target.value.toLowerCase();S.n=24;draw()};$('#more').onclick=function(){S.n+=24;draw()};
 function inCat(a){var c=a.c||[];if(S.cat==='All')return c.indexOf(D.overseas)<0&&c.indexOf(D.trends)<0;return c.indexOf(S.cat)>-1}
-function draw(){
+function go(w){if(w==='saved'){S.saved=true;draw();$('#stories').scrollIntoView()}else if(w==='occ'){$('#occ').scrollIntoView();var b=$('#va');if(!ALL&&!b.hidden)b.focus()}else{S.saved=false;draw();window.scrollTo(0,0)}
+ Array.prototype.forEach.call(document.querySelectorAll('header nav button'),function(b){b.setAttribute('aria-current',b.dataset.go===w)})}
+Array.prototype.forEach.call(document.querySelectorAll('[data-go]'),function(b){b.onclick=function(){go(b.dataset.go)}});
+function draw(){var n=Object.keys(SAVED).length;$('#navs').textContent='Saved stories'+(n?' ('+n+')':'');
  var pool=S.saved?Object.keys(SAVED).map(function(k){return SAVED[k]}):D.articles;
  var list=pool.filter(function(a){return(S.saved||inCat(a))&&(!S.q||((a.t||'')+' '+(a.p||(/^GNews/.test(a.s||'')?'':a.s)||'')+' '+(a.e||'')).toLowerCase().indexOf(S.q)>-1)});
- var sv=$('#sv');sv.textContent='Saved ('+Object.keys(SAVED).length+')';sv.setAttribute('aria-pressed',S.saved);
- Array.prototype.forEach.call(F.querySelectorAll('.fb'),function(b){b.setAttribute('aria-pressed',b.dataset.k===S.cat)});
- var fb=$('#featbox');fb.innerHTML='';
- var f=!S.saved&&S.cat==='All'&&!S.q&&D.feat&&D.articles.filter(function(a){return a.l===D.feat})[0];
- if(f){fb.appendChild(h('h2',0,D.featLabel));fb.appendChild(card(f,true));list=list.filter(function(a){return a.l!==f.l})}
- var tr=$('#trow');tr.innerHTML='';var tl=D.articles.filter(function(a){return(a.c||[]).indexOf(D.trends)>-1}).slice(0,12);
- if(!tl.length)tr.appendChild(h('p','state','No trends or memes right now. Check the source status above.'));tl.forEach(function(a){tr.appendChild(card(a))});
- var g=$('#grid');g.innerHTML='';
- if(!list.length)g.appendChild(h('p','state',S.saved?'No saved articles yet. Tap the ☆ on a story to save it.':'No stories match. Try a different filter or search.'));
- list.slice(0,S.n).forEach(function(a){g.appendChild(card(a))});$('#more').hidden=list.length<=S.n}
+ Array.prototype.forEach.call(F.querySelectorAll('.fb'),function(b){b.setAttribute('aria-pressed',!S.saved&&b.dataset.k===S.cat)});
+ var fb=$('#featbox');fb.innerHTML='';var f=D.feat&&D.articles.filter(function(a){return a.l===D.feat})[0];
+ if(f){fb.appendChild(feat(f));if(!S.saved&&S.cat==='All'&&!S.q)list=list.filter(function(a){return a.l!==f.l})}else fb.appendChild(h('p','state','No standout story right now. See the latest stories below.'));
+ var tl=D.articles.filter(function(a){return(a.c||[]).indexOf(D.trends)>-1}).slice(0,12),tr=$('#trow');tr.innerHTML='';
+ if(!tl.length)tr.appendChild(h('p','state','No trends came through from our sources right now. The evergreen ideas below are still useful.'));tl.forEach(function(a){tr.appendChild(card(a))});
+ var g=$('#grid');g.innerHTML='';$('#cnt').textContent=(S.saved?'Saved stories: ':'')+list.length+' stor'+(list.length===1?'y':'ies');
+ if(!list.length)g.appendChild(h('p','state',S.saved?'No saved stories yet. Tap the bookmark on a story to save it.':'No stories match. Try a different filter or search.'));
+ list.slice(0,S.n).forEach(function(a){g.appendChild(card(a))});$('#more').hidden=list.length<=S.n;setTimeout(nv,0)}
+function nv(){var r=$('#trow');$('#tnv').hidden=r.scrollWidth<=r.clientWidth+4}
+function sc(d){var r=$('#trow');r.scrollBy({left:d*r.clientWidth*.8,behavior:'smooth'})}
+$('#tp').onclick=function(){sc(-1)};$('#tn').onclick=function(){sc(1)};$('#trow').onkeydown=function(e){if(e.key==='ArrowRight'){sc(1);e.preventDefault()}if(e.key==='ArrowLeft'){sc(-1);e.preventDefault()}};window.addEventListener('resize',nv);
 draw();
-$('#foot').textContent='Donergy Daily · Saved stories and custom occasions are stored only in this browser · Stories link to their original publishers · Singapore time (SGT)';
 })();
 </script></body></html>
