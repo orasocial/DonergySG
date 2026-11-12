@@ -1,18 +1,54 @@
-[
-  {"name":"Turkish Coffee Day","tag":"Turkish","md":"12-05"},
-  {"name":"Christmas","tag":"Global","md":"12-25"},
-  {"name":"New Year's Day","tag":"Global","md":"01-01"},
-  {"name":"Isra Mi'raj","tag":"Muslim","date":"2027-01-06","est":true,"src":"Estimated, confirm via MUIS"},
-  {"name":"Ramadan begins","tag":"Muslim","date":"2027-02-08","est":true,"src":"Estimated, depends on moon sighting"},
-  {"name":"Chinese New Year","tag":"Singapore","date":"2027-02-06"},
-  {"name":"Valentine's Day","tag":"Food","md":"02-14"},
-  {"name":"Hari Raya Puasa (Eid al-Fitr)","tag":"Muslim","date":"2027-03-10","est":true,"src":"Estimated, confirm via MUIS"},
-  {"name":"National Sovereignty & Children's Day","tag":"Turkish","md":"04-23"},
-  {"name":"Mother's Day","tag":"Food","date":"2027-05-09"},
-  {"name":"Hari Raya Haji (Eid al-Adha)","tag":"Muslim","date":"2027-05-17","est":true,"src":"Estimated, confirm via MUIS"},
-  {"name":"Singapore National Day","tag":"Singapore","md":"08-09"},
-  {"name":"Victory Day (Zafer Bayramı)","tag":"Turkish","md":"08-30"},
-  {"name":"Children's Day (SG)","tag":"Singapore","md":"10-01"},
-  {"name":"Republic Day (Cumhuriyet Bayramı)","tag":"Turkish","md":"10-29"},
-  {"name":"Donergy anniversary","tag":"Donergy","md":""}
-]
+"""Offline tests: python tests/test_build.py  (no network; feeds come from generated fixtures)."""
+import json, os, re, shutil, subprocess, sys, tempfile, html
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); sys.path.insert(0, ROOT); os.chdir(ROOT)
+import build
+from datetime import datetime
+now = build.NOW.isoformat()
+A = lambda t, s="SETHLUI", p="", l=None, e="", sgq=True: {"t": t, "l": l or "https://x.com/" + re.sub(r"\W+", "-", t)[:40], "d": now, "s": s, "p": p, "i": "", "e": e, "f": now, "sgq": sgq}
+ok = lambda c, m: print(("PASS " if c else "FAIL ") + m) or (c or sys.exit(1))
+
+# URL normalisation + headline similarity
+ok(build.norm_url("https://www.Site.com/a/?utm_source=x&id=2#top") == build.norm_url("http://site.com/a?id=2"), "tracking params, www, scheme, fragment ignored")
+bk1, bk2 = "Burger King Singapore's 11.11 Sale Brings 1-FOR-1 WHOPPER, Long Chicken & More", "Burger King 11.11 Deals: 1-for-1 Whopper, Long Chicken, Truffle Mayo Burgers and More"
+ok(build.similar(bk1, bk2), "same promotion, different wording is grouped")
+ok(not build.similar(bk1, "McDonald's Singapore launches 11.11 deals with 1-for-1 McSpicy"), "different brand is not grouped")
+ok(not build.similar("Mr. Cheesecake pop-up opens in Singapore", "Why queues for pop-ups are getting shorter in Singapore"), "different angle stays separate")
+
+# relevance
+drop = ["New Southampton restaurant gives away free food on opening day", "Dover food drive and giveaway hosted by 75 Broadway Laundromat",
+        "Up to $250 cash payouts for Singaporeans in Dec 2026", "CJ CheilJedang Steps Up AI Factory Transition for Food and Beverage"]
+for t in drop: ok(build.classify(A(t, "GNews: Freebies", "Yahoo")) is None, "filtered: " + t[:50])
+ok(not build.classify(A("Singapore property cooling measures explained", "SETHLUI")), "SG publisher alone is not enough")
+n = build.classify(A("New Turkish restaurant opens at Millenia Walk with 1-for-1 döner", "GNews: Turkish food SG", "Mothership"))
+ok(n and "Near Millenia" in n["c"] and "Halal Dining" in n["c"] and n["x"] and n["w"], "Millenia + Turkish story kept, tagged, has why/idea")
+o = build.classify(A("How a London cafe grew with a viral TikTok loyalty campaign", "Eater", sgq=False))
+ok(o and o["c"] == ["Overseas ideas"], "overseas marketing example goes only to Overseas ideas")
+h = build.classify(A("Hi Bánh Mì: hidden gem in Geylang"))
+ok(h and h["hl"] if "hl" in h else True, "plain SG food story kept")
+
+t1 = build.classify(A("Why this chicken rice meme is taking over TikTok", "GNews: TikTok trends", "Mothership", sgq=False) | {"tr": True})
+ok(t1 and t1["c"] == [build.TRENDS] and t1["reg"] == "tr", "trend/meme items go to the Trends & Memes row only")
+ok(build.classify(A("Dover laundromat giveaway goes viral", "GNews: TikTok trends", "Yahoo", sgq=False) | {"tr": True}) is None, "local giveaways filtered from trends too")
+ok(build.classify(A("Parliament passes new housing bill", "GNews: Viral trends SG", "CNA", sgq=False) | {"tr": True}) is None, "non-trend news filtered from trends feed")
+# grouping keeps clearest original source
+g = build.cluster([build.classify(A(bk1, "GNews: 1-for-1 SG", "Danamic", l="https://news.google.com/rss/articles/AAA?oc=5")), build.classify(A(bk2, "SETHLUI", l="https://sethlui.com/bk-1111?utm_source=fb"))])
+ok(len(g) == 1 and "sethlui.com" in g[0]["l"] and len(g[0]["rel"]) == 1, "duplicates grouped; original publisher is main, other coverage kept as related")
+
+# end-to-end with a simulated failed source, then a total outage
+tmp = tempfile.mkdtemp(); [shutil.copy(f, tmp) for f in ("build.py", "feeds.json", "holidays.json", "template.html")]; os.makedirs(tmp + "/docs"); os.makedirs(tmp + "/fx")
+prev = json.loads(re.search(r'<script id="data" type="application/json">(.*?)</script>', open("docs/index.html", encoding="utf-8").read(), re.S).group(1).replace("<\\/", "</"))
+feeds = json.load(open("feeds.json")); names = [f["name"] for l in feeds.values() for f in l]
+for nme in names:
+    items = "".join(f"<item><title>{html.escape(a['t'])}</title><link>{html.escape(a['l'])}</link><pubDate>Wed, 11 Nov 2026 03:00:00 GMT</pubDate></item>" for a in prev["articles"] if a["s"].replace("News: ", "GNews: ") == nme)
+    open(f"{tmp}/fx/{build.slug(nme)}.xml", "w", encoding="utf-8").write(f"<rss><channel>{items}</channel></rss>")
+run = lambda extra: subprocess.run([sys.executable, "build.py"], cwd=tmp, env={**os.environ, "DD_FIXTURES": tmp + "/fx", **extra}, capture_output=True, text=True)
+load = lambda: json.loads(re.search(r'<script id="data" type="application/json">(.*?)</script>', open(tmp + "/docs/index.html", encoding="utf-8").read(), re.S).group(1).replace("<\\/", "</"))
+r0 = run({}); d0 = load()
+ok(r0.returncode == 0 and d0["failed"] <= 4, f"baseline build ({d0['ok']} sources ok, {len(d0['articles'])} stories)")
+n0 = sum(1 for a in d0["articles"] if a["s"] == "SETHLUI")
+r = run({"DD_FAIL": "SETHLUI"}); d1 = load()
+ok(r.returncode == 0 and any(s["n"] == "SETHLUI" and not s["ok"] and "503" in s["why"] for s in d1["sources"]), "simulated failure recorded with reason")
+ok(d1["ok"] == d0["ok"] - 1 and len(d1["articles"]) == len(d0["articles"]), "other sources still loaded; nothing lost")
+ok(n0 > 0 and all(a["cached"] for a in d1["articles"] if a["s"] == "SETHLUI") and not any(a["cached"] for a in d1["articles"] if a["s"] != "SETHLUI"), f"failed source's {n0} stories kept and marked cached; others not")
+r = run({"DD_FAIL": "|".join(names)}); d2 = load()
+ok(d2["ok"] == 0 and len(d2["articles"]) == len(d1["articles"]) and d2["updated"] == d1["updated"], "total outage: stories kept, 'last updated' not advanced")

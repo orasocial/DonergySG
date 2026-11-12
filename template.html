@@ -1,112 +1,172 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>__TITLE__</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#FAF7F2;--card:#fff;--red:#C82025;--gold:#C49A45;--ink:#242424;--mut:#67615C;--line:#E7DFD3}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Poppins,system-ui,sans-serif}
-.wrap{max-width:1200px;margin:0 auto;padding:0 20px}a{color:inherit}
-:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-header{background:#fff;border-bottom:1px solid var(--line)}header:after{content:"";display:block;height:6px;background:repeating-linear-gradient(135deg,var(--red) 0 10px,var(--gold) 10px 20px)}
-.top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:flex-end;padding:22px 0}
-.brand{font:400 44px/1 Anton,Impact,sans-serif;letter-spacing:.5px;margin:0;font-style:normal}.brand span{color:var(--red)}
-.sub{margin:4px 0 0;color:var(--mut)}.upd{font-size:13px;color:var(--mut);text-align:right;margin:0}.upd b{color:var(--ink)}
-h2{font:400 26px/1.1 Anton,Impact,sans-serif;letter-spacing:.5px;margin:34px 0 14px;font-style:normal}
-.occ{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x proximity}
-.o{flex:0 0 210px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;scroll-snap-align:start}
-.o.soon{border:2px solid var(--red)}.o b{display:block;font-weight:600;line-height:1.3;margin:6px 0 2px}.o small{color:var(--mut)}
-.chip{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:99px;border:1px solid var(--gold);color:var(--ink)}
-.chip.s{background:var(--red);border-color:var(--red);color:#fff}.dleft{font:400 22px Anton,Impact,sans-serif;color:var(--red);display:block;margin-top:6px}
-.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 18px}
-.bar input{flex:1 1 240px;padding:11px 14px;border:1px solid var(--line);border-radius:99px;font:inherit;background:#fff}
-.f{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-button{font:500 14px Poppins,sans-serif;cursor:pointer}
-.f button,.sv{padding:8px 15px;border:1px solid var(--line);background:#fff;border-radius:99px;color:var(--ink)}
-.f button:hover,.sv:hover{border-color:var(--red)}.f button[aria-pressed=true],.sv[aria-pressed=true]{background:var(--red);border-color:var(--red);color:#fff}
-.feat{display:grid;grid-template-columns:1.1fr 1fr;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:22px}
-.feat .ph,.feat img{min-height:260px;height:100%;width:100%;object-fit:cover}.feat .tx{padding:28px;display:flex;flex-direction:column;justify-content:center;gap:10px}
-.feat h3{font:600 26px/1.25 Poppins;margin:0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,border-color .18s;animation:in .4s both}
-.card:hover{transform:translateY(-3px);border-color:var(--red)}.card img,.card .ph{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
-.ph{display:flex;align-items:flex-end;padding:14px;font:400 22px/1.1 Anton,Impact,sans-serif;color:var(--red);background:linear-gradient(135deg,transparent 75%,rgba(196,154,69,.25) 75%),repeating-linear-gradient(45deg,#FFF3E6 0 14px,#FBE9D2 14px 28px)}
-.card .tx{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
-.card h3{font:600 19px/1.35 Poppins;margin:0}.meta{font-size:13px;color:var(--mut)}
-.rd{margin-top:auto;font-weight:600;font-size:14px;color:var(--red);text-decoration:none}.rd:hover{text-decoration:underline}
-.bm{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:18px;line-height:1}
-.bm[aria-pressed=true]{background:var(--red);color:#fff;border-color:var(--red)}
-.state{padding:40px 20px;text-align:center;color:var(--mut);background:#fff;border:1px dashed var(--line);border-radius:12px}
-.warn{background:#FFF6DD;border:1px solid var(--gold);border-radius:10px;padding:10px 14px;margin:14px 0;font-size:14px}
-.more{display:block;margin:22px auto;padding:10px 24px;border:1px solid var(--red);color:var(--red);background:#fff;border-radius:99px}
-.more[hidden]{display:none}
-footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 20px}
-@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){.card{animation:none;transition:none}.card:hover{transform:none}}
-@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.feat{grid-template-columns:1fr}}
-@media(max-width:640px){.grid{grid-template-columns:1fr}.brand{font-size:36px}.upd{text-align:left}.feat .tx{padding:20px}.feat h3{font-size:22px}}
-</style></head><body>
-<header><div class="wrap top"><div><h1 class="brand">DONERGY <span>DAILY</span></h1><p class="sub" id="sub"></p></div><p class="upd" id="upd"></p></div></header>
-<main class="wrap">
-<div id="warn"></div>
-<h2>Upcoming occasions</h2><div class="occ" id="occ" tabindex="0" aria-label="Upcoming occasions"></div>
-<div id="featbox"></div>
-<h2>Latest stories</h2>
-<div class="bar"><label for="q" class="sr" style="position:absolute;left:-9999px">Search stories</label><input id="q" type="search" placeholder="Search stories or publishers"><button class="sv" id="sv" aria-pressed="false"></button></div>
-<div class="f" id="f" role="group" aria-label="Filter stories"></div>
-<div id="grid" class="grid"><p class="state" style="grid-column:1/-1">Loading stories…</p></div>
-<button class="more" id="more" hidden>Show more</button>
-</main>
-<footer id="foot"></footer>
-<script id="data" type="application/json">__DATA__</script>
-<script>
-(function(){
-var $=function(s){return document.querySelector(s)};
-function h(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
-var D;try{D=JSON.parse($('#data').textContent)}catch(e){$('#grid').innerHTML='<p class="state" style="grid-column:1/-1">Sorry, the story data could not be loaded. Please try again later.</p>';return}
-var TZ='Asia/Singapore',S={q:'',cat:'All',saved:false,n:30},SAVED={};
-try{SAVED=JSON.parse(localStorage.getItem('dd_saved')||'{}')}catch(e){}
-function persist(){try{localStorage.setItem('dd_saved',JSON.stringify(SAVED))}catch(e){}}
-function fd(i){return new Date(i).toLocaleDateString('en-SG',{day:'numeric',month:'short',year:'numeric',timeZone:TZ})}
-$('#sub').textContent=D.cfg.subtitle;
-var up=D.updated?Date.parse(D.updated):0;
-$('#upd').innerHTML=up?'Feeds last refreshed<br><b>'+new Date(up).toLocaleString('en-SG',{dateStyle:'medium',timeStyle:'short',timeZone:TZ})+' SGT</b>':'Not refreshed yet';
-var w=$('#warn');
-if(!up||Date.now()-up>18*36e5)w.appendChild(h('div','warn','The feed has not refreshed recently. Showing the last saved stories; article dates show when each story was published.'));
-else if(D.failed>0)w.appendChild(h('div','warn',D.failed+' source(s) did not respond in the latest refresh, so some stories may be missing.'));
-var oc=$('#occ');
-D.occasions.forEach(function(o){var left=Math.ceil((Date.parse(o.d+'T00:00:00+08:00')-Date.now())/864e5);if(left<0)return;
- var c=h('div','o'+(left<=30?' soon':''));c.appendChild(h('span','chip'+(left<=30?' s':''),o.g));
- c.appendChild(h('b',0,o.n));c.appendChild(h('small',0,fd(o.d+'T00:00:00+08:00')+(o.e?' (estimated)':'')));
- c.appendChild(h('span','dleft',left===0?'Today':left+(left===1?' day':' days')));if(o.s){c.appendChild(h('small',0,o.s))}
- if(left<=30)c.setAttribute('aria-label',o.n+', coming soon');oc.appendChild(c)});
-function ph(cat){return h('div','ph',cat)}
-function card(a,big){
- var c=h(big?'div':'article',big?'':'card');var im;
- if(a.i){im=document.createElement('img');im.src=a.i;im.alt='';im.loading='lazy';im.onerror=function(){im.replaceWith(ph(a.c[0]))}}else im=ph(a.c[0]);
- var t=h('div','tx');t.appendChild(h('span','chip',a.c[0]));
- var hh=h(big?'h3':'h3',0,a.t);t.appendChild(hh);t.appendChild(h('div','meta',a.s+' · '+fd(a.d)));
- var r=h('a','rd','Read article →');r.href=a.l;r.target='_blank';r.rel='noopener noreferrer';t.appendChild(r);
- if(big){c.className='feat';c.appendChild(im);c.appendChild(t);return c}
- var b=h('button','bm',SAVED[a.l]?'★':'☆');b.setAttribute('aria-pressed',!!SAVED[a.l]);b.setAttribute('aria-label','Save article: '+a.t);
- b.onclick=function(){if(SAVED[a.l])delete SAVED[a.l];else SAVED[a.l]=a;persist();draw()};
- c.appendChild(im);c.appendChild(b);c.appendChild(t);return c}
-var F=$('#f');['All'].concat(D.cats).forEach(function(k){var b=h('button',0,k);b.setAttribute('aria-pressed',k===S.cat);b.onclick=function(){S.cat=k;S.n=30;draw()};F.appendChild(b)});
-$('#q').oninput=function(e){S.q=e.target.value.toLowerCase();S.n=30;draw()};
-$('#sv').onclick=function(){S.saved=!S.saved;S.n=30;draw()};
-$('#more').onclick=function(){S.n+=30;draw()};
-function draw(){
- var pool=S.saved?Object.keys(SAVED).map(function(k){return SAVED[k]}):D.articles.slice().sort(function(a,b){return (b.k||0)-(a.k||0)});
- var list=pool.filter(function(a){return (S.cat==='All'||a.c.indexOf(S.cat)>-1)&&(!S.q||(a.t+' '+a.s).toLowerCase().indexOf(S.q)>-1)});
- var sv=$('#sv');sv.textContent='Saved ('+Object.keys(SAVED).length+')';sv.setAttribute('aria-pressed',S.saved);
- Array.prototype.forEach.call(F.children,function(b){b.setAttribute('aria-pressed',b.textContent===S.cat)});
- var fb=$('#featbox');fb.innerHTML='';
- var f=!S.saved&&S.cat==='All'&&!S.q&&D.feat&&D.articles.filter(function(a){return a.l===D.feat})[0];
- if(f){fb.appendChild(h('h2',0,D.featLabel));fb.appendChild(card(f,true));list=list.filter(function(a){return a.l!==f.l})}
- var g=$('#grid');g.innerHTML='';
- if(!list.length)g.appendChild(h('p','state',S.saved?'No saved articles yet. Tap the ☆ on a story to save it.':'No stories match. Try a different filter or search.')).style.gridColumn='1/-1';
- list.slice(0,S.n).forEach(function(a){g.appendChild(card(a))});
- $('#more').hidden=list.length<=S.n}
-draw();
-$('#foot').textContent='Donergy Daily · Stories are linked from their original publishers · Singapore time (SGT)';
-})();
-</script></body></html>
+{
+ "Latest F&B": [
+  {
+   "name": "Honeycombers SG",
+   "url": "https://thehoneycombers.com/singapore/feed/",
+   "sg": true
+  },
+  {
+   "name": "GNews: F&B Singapore",
+   "url": "https://news.google.com/rss/search?q=food+and+beverage+singapore+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: New openings SG",
+   "url": "https://news.google.com/rss/search?q=new+restaurant+cafe+opening+singapore+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "Eater",
+   "url": "https://www.eater.com/rss/index.xml"
+  },
+  {
+   "name": "GNews: F&B today",
+   "url": "https://news.google.com/rss/search?q=food+and+beverage+industry+when:1d",
+   "images": false
+  },
+  {
+   "name": "GNews: Marina Bay dining",
+   "url": "https://news.google.com/rss/search?q=%22Marina+Bay%22+OR+%22Millenia+Walk%22+OR+Suntec+restaurant+OR+dining+OR+event+when:14d",
+   "sg": true,
+   "images": false
+  }
+ ],
+ "Promos & Deals": [
+  {
+   "name": "SETHLUI",
+   "url": "https://sethlui.com/feed/",
+   "sg": true
+  },
+  {
+   "name": "GNews: 1-for-1 SG",
+   "url": "https://news.google.com/rss/search?q=1-for-1+food+deal+singapore+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Food promo SG",
+   "url": "https://news.google.com/rss/search?q=restaurant+promotion+singapore+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Freebies",
+   "url": "https://news.google.com/rss/search?q=free+food+giveaway+singapore+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Delivery promos SG",
+   "url": "https://news.google.com/rss/search?q=grabfood+OR+foodpanda+OR+deliveroo+promo+singapore+when:7d",
+   "sg": true,
+   "images": false
+  }
+ ],
+ "Turkish & Halal": [
+  {
+   "name": "GNews: Turkish food SG",
+   "url": "https://news.google.com/rss/search?q=turkish+restaurant+OR+kebab+singapore+when:30d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Halal SG",
+   "url": "https://news.google.com/rss/search?q=halal+food+singapore+when:14d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Turkish food",
+   "url": "https://news.google.com/rss/search?q=turkish+cuisine+OR+d%C3%B6ner+when:14d",
+   "images": false
+  },
+  {
+   "name": "GNews: Ramadan & Eid food",
+   "url": "https://news.google.com/rss/search?q=ramadan+OR+eid+OR+hari+raya+food+when:14d",
+   "images": false
+  }
+ ],
+ "Social & Trends": [
+  {
+   "name": "GNews: Viral food SG",
+   "url": "https://news.google.com/rss/search?q=viral+food+singapore+tiktok+OR+instagram+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: F&B marketing SG",
+   "url": "https://news.google.com/rss/search?q=singapore+restaurant+social+media+marketing+when:14d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "r/SingaporeEats",
+   "url": "https://www.reddit.com/r/SingaporeEats/top/.rss?t=week",
+   "sg": true,
+   "images": false,
+   "alt": [
+    "https://old.reddit.com/r/SingaporeEats/top/.rss?t=week"
+   ]
+  },
+  {
+   "name": "Social Media Today",
+   "url": "https://www.socialmediatoday.com/feeds/news/"
+  }
+ ],
+ "Memes": [
+  {
+   "name": "r/foodmemes",
+   "url": "https://www.reddit.com/r/foodmemes/top/.rss?t=week",
+   "meme": true,
+   "images": false,
+   "alt": [
+    "https://old.reddit.com/r/foodmemes/top/.rss?t=week"
+   ]
+  },
+  {
+   "name": "r/KitchenConfidential",
+   "url": "https://www.reddit.com/r/KitchenConfidential/top/.rss?t=week",
+   "meme": true,
+   "images": false,
+   "alt": [
+    "https://old.reddit.com/r/KitchenConfidential/top/.rss?t=week"
+   ]
+  },
+  {
+   "name": "r/shittyfoodporn",
+   "url": "https://www.reddit.com/r/shittyfoodporn/top/.rss?t=week",
+   "meme": true,
+   "images": false,
+   "alt": [
+    "https://old.reddit.com/r/shittyfoodporn/top/.rss?t=week"
+   ]
+  }
+ ],
+ "Trends & Memes": [
+  {
+   "name": "Know Your Meme",
+   "url": "https://knowyourmeme.com/newsfeed.rss",
+   "trend": true
+  },
+  {
+   "name": "GNews: TikTok trends",
+   "url": "https://news.google.com/rss/search?q=tiktok+trend+OR+viral+trend+food+OR+restaurant+when:7d",
+   "trend": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Meme marketing",
+   "url": "https://news.google.com/rss/search?q=meme+marketing+brand+OR+restaurant+when:14d",
+   "trend": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Viral trends SG",
+   "url": "https://news.google.com/rss/search?q=viral+trend+singapore+social+media+when:7d",
+   "trend": true,
+   "images": false
+  }
+ ]
+}
