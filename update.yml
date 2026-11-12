@@ -1,0 +1,26 @@
+name: Update feed
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: update-feed
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tests/test_build.py
+        continue-on-error: true  # a failing test should never stop the feed from updating
+      - run: mkdir -p docs && python build.py
+      - run: |
+          git config user.name "feed-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add docs/index.html
+          git diff --staged --quiet || git commit -m "update feed"
+          git push
