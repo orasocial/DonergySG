@@ -1,32 +1,143 @@
 {
-  "Latest F&B": [
-    {"name": "Honeycombers SG", "url": "https://thehoneycombers.com/singapore/feed/", "sg": true},
-    {"name": "GNews: F&B Singapore", "url": "https://news.google.com/rss/search?q=food+and+beverage+singapore+when:7d", "sg": true},
-    {"name": "GNews: New openings SG", "url": "https://news.google.com/rss/search?q=new+restaurant+cafe+opening+singapore+when:7d", "sg": true},
-    {"name": "Eater", "url": "https://www.eater.com/rss/index.xml"},
-    {"name": "GNews: F&B today", "url": "https://news.google.com/rss/search?q=food+and+beverage+industry+when:1d"}
-  ],
-  "Promos & Deals": [
-    {"name": "SETHLUI", "url": "https://sethlui.com/feed/", "sg": true},
-    {"name": "GNews: 1-for-1 SG", "url": "https://news.google.com/rss/search?q=1-for-1+food+deal+singapore+when:7d", "sg": true},
-    {"name": "GNews: Food promo SG", "url": "https://news.google.com/rss/search?q=restaurant+promotion+singapore+when:7d", "sg": true},
-    {"name": "GNews: Freebies", "url": "https://news.google.com/rss/search?q=free+food+giveaway+singapore+when:7d", "sg": true}
-  ],
-  "Turkish & Halal": [
-    {"name": "GNews: Turkish food SG", "url": "https://news.google.com/rss/search?q=turkish+restaurant+OR+kebab+singapore+when:30d", "sg": true},
-    {"name": "GNews: Halal SG", "url": "https://news.google.com/rss/search?q=halal+food+singapore+when:14d", "sg": true},
-    {"name": "GNews: Turkish food", "url": "https://news.google.com/rss/search?q=turkish+cuisine+OR+d%C3%B6ner+when:14d"},
-    {"name": "GNews: Ramadan & Eid food", "url": "https://news.google.com/rss/search?q=ramadan+OR+eid+OR+hari+raya+food+when:14d"}
-  ],
-  "Social & Trends": [
-    {"name": "GNews: Viral food SG", "url": "https://news.google.com/rss/search?q=viral+food+singapore+tiktok+OR+instagram+when:7d", "sg": true},
-    {"name": "GNews: F&B marketing SG", "url": "https://news.google.com/rss/search?q=singapore+restaurant+social+media+marketing+when:14d", "sg": true},
-    {"name": "r/SingaporeEats", "url": "https://www.reddit.com/r/SingaporeEats/top/.rss?t=week", "sg": true},
-    {"name": "Social Media Today", "url": "https://www.socialmediatoday.com/feeds/news/"}
-  ],
-  "Memes": [
-    {"name": "r/foodmemes", "url": "https://www.reddit.com/r/foodmemes/top/.rss?t=week"},
-    {"name": "r/KitchenConfidential", "url": "https://www.reddit.com/r/KitchenConfidential/top/.rss?t=week"},
-    {"name": "r/shittyfoodporn", "url": "https://www.reddit.com/r/shittyfoodporn/top/.rss?t=week"}
-  ]
+ "Latest F&B": [
+  {
+   "name": "Honeycombers SG",
+   "url": "https://thehoneycombers.com/singapore/feed/",
+   "sg": true
+  },
+  {
+   "name": "GNews: F&B Singapore",
+   "url": "https://news.google.com/rss/search?q=food+and+beverage+singapore+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: New openings SG",
+   "url": "https://news.google.com/rss/search?q=new+restaurant+cafe+opening+singapore+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "Eater",
+   "url": "https://www.eater.com/rss/index.xml"
+  },
+  {
+   "name": "GNews: F&B today",
+   "url": "https://news.google.com/rss/search?q=food+and+beverage+industry+when:1d",
+   "images": false
+  },
+  {
+   "name": "GNews: Marina Bay dining",
+   "url": "https://news.google.com/rss/search?q=%22Marina+Bay%22+OR+%22Millenia+Walk%22+OR+Suntec+restaurant+OR+dining+OR+event+when:14d",
+   "sg": true,
+   "images": false
+  }
+ ],
+ "Promos & Deals": [
+  {
+   "name": "SETHLUI",
+   "url": "https://sethlui.com/feed/",
+   "sg": true
+  },
+  {
+   "name": "GNews: 1-for-1 SG",
+   "url": "https://news.google.com/rss/search?q=1-for-1+food+deal+singapore+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Food promo SG",
+   "url": "https://news.google.com/rss/search?q=restaurant+promotion+singapore+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Freebies",
+   "url": "https://news.google.com/rss/search?q=free+food+giveaway+singapore+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Delivery promos SG",
+   "url": "https://news.google.com/rss/search?q=grabfood+OR+foodpanda+OR+deliveroo+promo+singapore+when:7d",
+   "sg": true,
+   "images": false
+  }
+ ],
+ "Turkish & Halal": [
+  {
+   "name": "GNews: Turkish food SG",
+   "url": "https://news.google.com/rss/search?q=turkish+restaurant+OR+kebab+singapore+when:30d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Halal SG",
+   "url": "https://news.google.com/rss/search?q=halal+food+singapore+when:14d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Turkish food",
+   "url": "https://news.google.com/rss/search?q=turkish+cuisine+OR+d%C3%B6ner+when:14d",
+   "images": false
+  },
+  {
+   "name": "GNews: Ramadan & Eid food",
+   "url": "https://news.google.com/rss/search?q=ramadan+OR+eid+OR+hari+raya+food+when:14d",
+   "images": false
+  }
+ ],
+ "Social & Trends": [
+  {
+   "name": "GNews: Viral food SG",
+   "url": "https://news.google.com/rss/search?q=viral+food+singapore+tiktok+OR+instagram+when:7d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "GNews: F&B marketing SG",
+   "url": "https://news.google.com/rss/search?q=singapore+restaurant+social+media+marketing+when:14d",
+   "sg": true,
+   "images": false
+  },
+  {
+   "name": "r/SingaporeEats",
+   "url": "https://www.reddit.com/r/SingaporeEats/top/.rss?t=week",
+   "sg": true,
+   "images": false,
+   "alt": [
+    "https://old.reddit.com/r/SingaporeEats/top/.rss?t=week"
+   ]
+  },
+  {
+   "name": "Social Media Today",
+   "url": "https://www.socialmediatoday.com/feeds/news/"
+  }
+ ],
+ "Trends & Memes": [
+  {
+   "name": "Know Your Meme",
+   "url": "https://knowyourmeme.com/newsfeed.rss",
+   "trend": true
+  },
+  {
+   "name": "GNews: TikTok trends",
+   "url": "https://news.google.com/rss/search?q=tiktok+trend+OR+viral+trend+food+OR+restaurant+when:7d",
+   "trend": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Meme marketing",
+   "url": "https://news.google.com/rss/search?q=meme+marketing+brand+OR+restaurant+when:14d",
+   "trend": true,
+   "images": false
+  },
+  {
+   "name": "GNews: Viral trends SG",
+   "url": "https://news.google.com/rss/search?q=viral+trend+singapore+social+media+when:7d",
+   "trend": true,
+   "images": false
+  }
+ ]
 }
