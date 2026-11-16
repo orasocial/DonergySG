@@ -83,26 +83,28 @@ nav{margin:0;width:100%;justify-content:space-between}nav button{padding:8px 6px
 <style>
 .dg{padding:22px 24px 16px;margin-top:34px}.dg h2.s{margin-bottom:10px}
 .dg-sub{font-size:13px;color:var(--mut);margin:0 0 12px}
-.dg-addr{background:var(--tint);border-radius:12px;padding:10px 12px;margin-bottom:12px}
+.dg-head{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch;margin-bottom:12px}
+.dg-addr{background:var(--tint);border-radius:12px;padding:10px 12px}
 .dg-addr-label{font-size:11px;letter-spacing:.6px;color:var(--red);font-weight:600}
-.dg-addr-text{font-size:13.5px;font-weight:500;margin:4px 0 8px}
+.dg-addr-text{font-size:13.5px;font-weight:500;margin:4px 0 4px}
+.dg-addr-sub{font-size:12.5px;color:var(--mut);margin:0 0 8px}
 .dg-copy{border:1px solid var(--red);background:#fff;color:var(--red);border-radius:99px;padding:4px 12px;font-size:13px}
 .dg-copy:hover{background:var(--red);color:#fff}
-.dg-stats{display:flex;gap:8px;margin-bottom:10px}
-.dg-stat{flex:1;border:1px solid var(--line);border-radius:10px;padding:6px 8px;text-align:center}
+.dg-stats{display:flex;gap:8px}
+.dg-stat{flex:1;border:1px solid var(--line);border-radius:10px;padding:6px 8px;text-align:center;display:flex;flex-direction:column;justify-content:center}
 .dg-stat strong{display:block;font:400 22px Anton,Impact,sans-serif;color:var(--red)}
 .dg-stat span{font-size:11px;color:var(--mut)}
 .dg-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .dg-chip{border:1px solid var(--line);background:#fff;border-radius:99px;padding:3px 11px;font-size:12.5px}
 .dg-chip.active{background:var(--red);border-color:var(--red);color:#fff}
-.dg-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px;max-height:620px;overflow-y:auto}
+.dg-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px;max-height:640px;overflow-y:auto}
 .dg-item{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
 .dg-item:nth-child(-n+2){border-top:0}
 .dg-date{flex:0 0 52px;align-self:flex-start;background:var(--tint);border-radius:10px;text-align:center;padding:6px 2px;font-size:11px;line-height:1.25;color:var(--mut)}
 .dg-date strong{display:block;font:400 15px Anton,Impact,sans-serif;color:var(--ink)}
 .dg-body{min-width:0}
-.dg-body a,.dg-title-plain{font-weight:600;font-size:14px;text-decoration:none}
-.dg-body a:hover{color:var(--red);text-decoration:underline}
+.dg-body a.dg-t{font-weight:600;font-size:14px;text-decoration:none}
+.dg-body a.dg-t:hover{color:var(--red);text-decoration:underline}
 .dg-meta{font-size:12.5px;color:var(--mut);margin-top:3px}
 .dg-tag{display:inline-block;border:1px solid var(--red);color:var(--red);border-radius:99px;padding:0 8px;font-size:11px;margin-right:6px}
 .dg-act{margin-top:8px;padding:8px 10px;border-radius:10px;background:#FBF4E4}
@@ -110,235 +112,234 @@ nav{margin:0;width:100%;justify-content:space-between}nav button{padding:8px 6px
 .dg-pill-update{background:#B3261E}.dg-pill-claim{background:#B7791F}.dg-pill-verify{background:#3B6EA5}.dg-pill-ok{background:#2E8B57}.dg-pill-skip{background:#8A7F74}
 .dg-worth{font-size:12px;color:var(--mut)}
 .dg-note{font-size:13px;margin-top:5px;line-height:1.4}
+.dg-links{margin-top:6px;display:flex;gap:12px;flex-wrap:wrap}
+.dg-links a{font-size:12.5px;font-weight:600;color:var(--red);text-decoration:none}
+.dg-links a:hover{text-decoration:underline}
 .dg-foot{font-size:12px;color:var(--mut);margin:12px 0 0}
-</style><style>
-.dg-head{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch;margin-bottom:12px}
-.dg-head .dg-addr,.dg-head .dg-stats{margin:0}
-.dg-head .dg-stats .dg-stat{display:flex;flex-direction:column;justify-content:center}
+.seo{padding:22px 24px 18px;margin-top:20px}.seo h2.s{margin-bottom:10px}
+.seo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+.seo-col{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff}
+.seo-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.seo-name{font:400 20px Anton,Impact,sans-serif;color:var(--red);line-height:1.1}
+.seo-sub{font-size:12.5px;color:var(--mut);margin-top:2px}
+.seo-lvl{border-radius:99px;padding:2px 10px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap}
+.seo-lvl-Medium{background:#B7791F}.seo-lvl-Low{background:#B3261E}.seo-lvl-VeryLow{background:#7A1017}
+.seo-h{font-size:11px;letter-spacing:.6px;font-weight:600;color:var(--red);margin:12px 0 5px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:6px}
+.seo-kw a{border:1px solid var(--line);background:var(--tint);border-radius:99px;padding:2px 10px;font-size:12px;text-decoration:none}
+.seo-kw a:hover{border-color:var(--red);color:var(--red)}
+.seo-col ul{margin:0;padding-left:18px;font-size:13px;line-height:1.45}
+.seo-col li{margin:3px 0}
+.seo-col li a{font-weight:600;color:var(--ink)}
+.seo-col li a:hover{color:var(--red)}
+.seo-none{font-size:13px;color:var(--mut);margin:0}
+.seo-view{font-size:12.5px;font-weight:600;color:var(--red);text-decoration:none}
 @media(max-width:1000px){.dg-head{grid-template-columns:1fr}.dg-list{grid-template-columns:1fr}.dg-item:nth-child(2){border-top:1px solid var(--line)}}
-</style><section class="box dg" aria-labelledby="h-dg">
+</style>
+
+<section class="box dg" aria-labelledby="h-dg">
 <h2 class="s" id="h-dg">Donergy in the wild</h2>
 <p class="dg-sub">Articles, blogs, reviews, social posts and listings mentioning Donergy Turkish Kebab, with what to fix or claim.</p>
-<div class="dg-head"><div class="dg-addr"><div class="dg-addr-label">CURRENT ADDRESS (use this everywhere)</div><div class="dg-addr-text" id="dg-addr-text">Donergy Turkish Kebab, 9 Raffles Boulevard, #01-91B Millenia Walk, Singapore 039596</div><button type="button" class="dg-copy" id="dg-copy">Copy address</button></div>
+<div class="dg-head">
+<div class="dg-addr"><div class="dg-addr-label">CURRENT DETAILS (use these everywhere)</div><div class="dg-addr-text" id="dg-addr-text">Donergy Turkish Kebab, 9 Raffles Boulevard, #01-91B Millenia Walk, Singapore 039596</div><p class="dg-addr-sub">Daily 11 AM to 9:30 PM (last order 9 PM) · +65 9655 5061 · MUIS-certified halal</p><button type="button" class="dg-copy" id="dg-copy">Copy address</button></div>
 <div class="dg-stats" id="dg-stats"></div>
 </div>
 <div class="dg-chips" id="dg-chips"></div>
 <ul class="dg-list" id="dg-list"></ul>
 <p class="dg-foot">Claim status is based on what the public pages show. Confirm inside each platform before acting.</p>
-</section><script>
-  /* action: update | claim | verify | ok | skip
-     worth:  High | Medium | Low  (only shown for update, claim, verify)
-     sort:   YYYYMM, use 0 for undated. pin:true keeps an item at the top.
-     url:    leave "" if there is no public link. */
-  const MENTIONS = [
-    { pin: true, sort: 0, label: "Main", year: "", type: "Listing",
-      title: "Google Business Profile (4.8 stars, 1600+ reviews)",
-      source: "Google", url: "",
-      action: "verify", worth: "High",
-      note: "Source of truth. Confirm address, hours, phone and halal status here first. Many aggregators copy from Google." },
+</section>
 
-    { sort: 202605, label: "May", year: "2026", type: "Review",
-      title: "TripAdvisor reviews for Donergy (shown on Eatapp)",
-      source: "Eatapp / TripAdvisor",
-      url: "https://eatapp.co/donergy-turkish-kebab-9-raffles-boulevard-millenia-walk-suite-01-91b-singapore-039596-singapore",
-      action: "claim", worth: "High",
-      note: "Reviews come from TripAdvisor. Find the TripAdvisor listing and claim it (free) to fix hours, reply to reviews and reach tourists and hotel guests. Hours here (11:30 am to 9 pm) differ from other listings, so it may be unmanaged." },
+<section class="box seo" aria-labelledby="h-seo">
+<h2 class="s" id="h-seo">SEO visibility by brand</h2>
+<p class="dg-sub">Based on a few Singapore searches, not live rankings. Tap a keyword to check it on Google (Singapore).</p>
+<div class="seo-grid" id="seo-grid"></div>
+</section>
 
-    { sort: 202601, label: "2026", year: "2026", type: "Article",
-      title: "10 Best Turkish Restaurants in Singapore",
-      source: "SBO.sg",
-      url: "https://sbo.sg/?p=31252",
-      action: "ok", note: "Editorial list. No address issue seen." },
+<script>
+/* ---------- LISTINGS / MENTIONS ----------
+   action: update | claim | verify | ok | skip     worth: High | Medium | Low
+   sort: YYYYMM (0 = undated)   pin: true keeps it on top
+   url: open link    fix: {label, url} optional claim/edit link */
+const MENTIONS = [
+  { pin:true, sort:0, label:"Main", year:"", type:"Listing", title:"donergy.sg (Wix website)", source:"Your website",
+    url:"https://www.donergy.sg", action:"verify", worth:"High",
+    note:"Master source for address, hours and phone. Add 'halal' (MUIS-certified) to the title, H1 and meta description. See the SEO columns below." },
+  { pin:true, sort:0, label:"Main", year:"", type:"Listing", title:"Google Business Profile (4.8 stars, 1600+ reviews)", source:"Google",
+    url:"https://www.google.com/maps/search/?api=1&query=Donergy+Turkish+Kebab+Millenia+Walk",
+    fix:{label:"Manage profile", url:"https://business.google.com/"},
+    action:"verify", worth:"High",
+    note:"Confirm address, hours (11 AM to 9:30 PM), phone and halal status. Many aggregators copy from Google." },
 
-    { sort: 202507, label: "Jul", year: "2025", type: "Review",
-      title: "Foodpanda reviews: 4.9 stars, 100+ ratings",
-      source: "Foodpanda",
-      url: "https://www.foodpanda.sg/restaurant/x1mf/donergy-turkish-kebab-millenia-walk/reviews",
-      action: "verify", worth: "Medium",
-      note: "Address is correct. Hours show 10:45 am to 9 pm, which differs from other listings. Confirm the real hours." },
+  { sort:202605, label:"May", year:"2026", type:"Review", title:"TripAdvisor reviews for Donergy (shown on Eatapp)", source:"Eatapp / TripAdvisor",
+    url:"https://eatapp.co/donergy-turkish-kebab-9-raffles-boulevard-millenia-walk-suite-01-91b-singapore-039596-singapore",
+    fix:{label:"Claim on TripAdvisor", url:"https://www.tripadvisor.com/Owners"},
+    action:"claim", worth:"High",
+    note:"Reviews come from TripAdvisor. Search the TripAdvisor listing and claim it (free) to fix hours, reply to reviews and reach tourists and hotel guests. Eatapp shows 11:30 AM to 9 PM, which differs from your site." },
+  { sort:202601, label:"2026", year:"2026", type:"Article", title:"10 Best Turkish Restaurants in Singapore", source:"SBO.sg",
+    url:"https://sbo.sg/?p=31252", action:"ok", note:"Editorial list. No address issue seen." },
+  { sort:202507, label:"Jul", year:"2025", type:"Review", title:"Foodpanda reviews: 4.9 stars, 100+ ratings", source:"Foodpanda",
+    url:"https://www.foodpanda.sg/restaurant/x1mf/donergy-turkish-kebab-millenia-walk/reviews", action:"verify", worth:"Medium",
+    note:"Address is correct. Hours show 10:45 AM to 9 PM, but your site says 11 AM to 9:30 PM. Align them." },
+  { sort:202501, label:"14 Jan", year:"2025", type:"Blog", title:"New Year's @ Donergy", source:"Shilee's blog",
+    url:"https://shileejwel.blogspot.com/2025/01/new-years-donergy.html", action:"ok", note:"Personal blog. Nothing to fix. Good to reshare on socials." },
+  { sort:202107, label:"Jul", year:"2021", type:"Article", title:"It's grill out here: best shawarma, meat platters and kebabs", source:"The Honeycombers",
+    url:"https://thehoneycombers.com/singapore/kebabs-in-singapore/", action:"update", worth:"High",
+    note:"The version I saw lists postal code 199476. Correct is 039596. Your website links to this post, so ask the editors to fix it." },
+  { sort:202009, label:"9 Sep", year:"2020", type:"Article", title:"Donergy Offers Authentic Turkish Food in Singapore", source:"Asian Journeys",
+    url:"https://asianjourneys.com.sg/09-Sep-2020/donergy-offers-authentic-turkish-food-in-singapore", action:"update", worth:"Low",
+    note:"Uses the old unit number (01-90). Optional email asking for #01-91B. Low priority since it is a dated review." },
+  { sort:201807, label:"Jul", year:"2018", type:"Blog", title:"Donergy Turkish Kebab: Get Your Turkish Fix Here", source:"Hungry Ghost",
+    url:"https://hungryghostsg.blogspot.com/2018/07/blog-post.html", action:"update", worth:"Low",
+    note:"Old unit number (#01-90), old phone and old hours. A blog comment with the new address is enough." },
+  { sort:201801, label:"6 Jan", year:"2018", type:"Social", title:"\"First time trying Donergy!\" Instagram post", source:"Burpple (Posh Code)",
+    url:"https://burpple.com/f/mo_rk4tT", action:"skip", note:"Old social post. Nothing to fix." },
 
-    { sort: 202501, label: "14 Jan", year: "2025", type: "Blog",
-      title: "New Year's @ Donergy",
-      source: "Shilee's blog",
-      url: "https://shileejwel.blogspot.com/2025/01/new-years-donergy.html",
-      action: "ok", note: "Personal blog. Nothing to fix. Good to reshare on socials." },
+  { sort:0, label:"n/a", year:"", type:"Article", title:"Food picks: Donergy Turkish Kebab", source:"The Straits Times",
+    url:"https://www.straitstimes.com/life/food/food-picks-donergy-turkish-kebab-tapas24", action:"ok",
+    note:"Major press and already linked on your website. Reshare it and keep it as a trust signal." },
+  { sort:0, label:"n/a", year:"", type:"Article", title:"Best kebabs in Singapore (Donergy listed #1)", source:"The Honeycombers",
+    url:"https://thehoneycombers.com/singapore/kebabs-in-singapore-our-guide-to-the-best-doner-shawarma-and-more-in-clarke-quay-orchard-road-and-arab-street/",
+    action:"ok", note:"Address and postal code are correct." },
+  { sort:0, label:"n/a", year:"", type:"Article", title:"10 Shops For Hearty, Flavour-Packed Kebabs in Singapore", source:"Women's Weekly",
+    url:"https://www.womensweekly.com.sg/food/kebabs-singapore", action:"ok", note:"Address correct and links to your Instagram." },
+  { sort:0, label:"n/a", year:"", type:"Article", title:"Turkish Restaurant Singapore guide (Donergy listed #5)", source:"The Fun Empire",
+    url:"https://www.thefunempire.com/turkish-restaurant-singapore/", action:"update", worth:"Medium",
+    note:"Shows #01-90 and opening at 10 AM. Phone (+65 9655 5061) is still correct. Email them: #01-91B, 11 AM to 9:30 PM, admin@donergy.sg." },
+  { sort:0, label:"n/a", year:"", type:"Article", title:"Turkish ice cream and the Donergy Orchard kiosk", source:"Little Day Out",
+    url:"https://www.littledayout.com/turkish-ice-cream-in-singapore-twirling-antics-cool-cone", action:"verify", worth:"Medium",
+    note:"Covers the Orchard Road kiosk (Ngee Ann City, 391A Orchard Road #01-K1), not Millenia Walk. Check the kiosk is still open. If not, ask them to update." },
+  { sort:0, label:"n/a", year:"", type:"Listing", title:"Muslim-owned halal directory (Mediterranean)", source:"HalalBoleh",
+    url:"https://halalboleh.com/category/mediterranean?page=2", action:"update", worth:"High",
+    note:"Donergy is tagged 'Muslim Owned', but you are MUIS-certified. Ask them to change the tag. This helps 'halal food' searches." },
+  { sort:0, label:"n/a", year:"", type:"Listing", title:"Donergy 'Turkish Kebab' profile and menu (newer)", source:"Chope",
+    url:"https://www.chope.co/singapore-restaurants/restaurant/donergy-turkish-kebab", action:"verify", worth:"Low",
+    note:"Correct address (#01-91B) and a proper brand story. Keep this one. Sat and Sun hours show a 9 PM close, but your site says 9:30 PM." },
+  { sort:0, label:"n/a", year:"", type:"Listing", title:"Donergy 'Turkish Kebab' (older duplicate)", source:"Chope",
+    url:"https://www.chope.co/singapore-restaurants/restaurant/donergy-turkish-kebab-singapore", action:"update", worth:"High",
+    note:"Duplicate listing with the old unit #01-90 and generic text. Ask Chope to merge or remove it so reviews and address are not split." },
+  { sort:0, label:"n/a", year:"", type:"Listing", title:"Donergy on Burpple (wishlists and reviews)", source:"Burpple",
+    url:"https://burpple.com/donergy-turkish-kebab", action:"claim", worth:"Medium",
+    note:"Address is correct. Hours show only Fri to Sun at 11 AM to 9 PM (Monday blank). Worth claiming if free, for the local foodie crowd. Look for the business claim option on the page." },
+  { sort:0, label:"n/a", year:"", type:"Listing", title:"Donergy Turkish Kebab (Millenia Walk), Islandwide", source:"Foodpanda",
+    url:"https://www.foodpanda.sg/zh/restaurant/ssce/donergy-turkish-kebab-millenia-walk-islandwide", action:"verify", worth:"Low",
+    note:"Delivery listing. Keep menu and prices in sync with the main Foodpanda listing." },
+  { sort:0, label:"n/a", year:"", type:"Listing", title:"Maybank cardholder offer page", source:"Getz",
+    url:"https://donergy.getz.co/", action:"verify", worth:"Medium",
+    note:"Check the offer is still running and the address matches. Take it down or update it if the promo ended." },
+  { sort:0, label:"n/a", year:"", type:"Listing", title:"Donergy Turkish Ice-Cream brand page", source:"DiveDeals",
+    url:"https://divedeals.sg/brands/Donergy-Turkish-Ice-Cream", action:"verify", worth:"Low",
+    note:"Lists one outlet at River Valley Rd. Confirm that is real or ask for a fix. Independent aggregator, nothing to claim." },
+  { sort:0, label:"n/a", year:"", type:"Listing", title:"Donergy Turkish Kebab reviews and details", source:"Wanderlog",
+    url:"https://wanderlog.com/place/details/3978413/donergy-turkish-kebab", action:"skip", worth:"Low",
+    note:"Not worth claiming. It pulls from Google, so fix Google and this follows." }
+];
 
-    { sort: 202107, label: "Jul", year: "2021", type: "Article",
-      title: "It's grill out here: best shawarma, meat platters and kebabs",
-      source: "The Honeycombers",
-      url: "https://thehoneycombers.com/singapore/kebabs-in-singapore/",
-      action: "update", worth: "High",
-      note: "The version I saw lists postal code 199476. Correct is 039596. Email the editors for a fix. High authority site, so worth it." },
+/* ---------- SEO COLUMNS ---------- */
+const BRANDS = [
+  { name:"Donergy website", sub:"donergy.sg (Wix)", level:"Medium",
+    keywords:["halal turkish kebab millenia walk","halal food millenia walk","turkish restaurant millenia walk","turkish food suntec city"],
+    found:[{t:"Home",u:"https://www.donergy.sg"},{t:"Menu",u:"https://www.donergy.sg/menu"},{t:"Blog",u:"https://www.donergy.sg/blog"},{t:"Promotions",u:"https://www.donergy.sg/promotions"}],
+    todo:["Add 'halal' and MUIS-certified to the title, H1 and meta description. Today 'halal' appears only in body text.",
+          "Use one master for hours: 11 AM to 9:30 PM, last order 9 PM. Match Foodpanda, Chope, Burpple and TripAdvisor.",
+          "Ask The Honeycombers to fix the postal code on the post your site links to.",
+          "Check Google Search Console for queries, pages and rankings. The verification tags are already on the site.",
+          "Run the Rich Results Test to confirm Restaurant schema (address, hours, cuisine)."] },
+  { name:"Donergy Turkish ice cream", sub:"Dondurma at Millenia Walk and the Orchard kiosk", level:"Low",
+    keywords:["turkish ice cream singapore","dondurma singapore","free turkish ice cream millenia walk","turkish ice cream orchard"],
+    found:[{t:"donergy.sg ice cream page",u:"https://www.donergy.sg/turkish-ice-cream-singapore"},
+           {t:"Little Day Out (Orchard kiosk)",u:"https://www.littledayout.com/turkish-ice-cream-in-singapore-twirling-antics-cool-cone"},
+           {t:"DiveDeals brand page",u:"https://divedeals.sg/brands/Donergy-Turkish-Ice-Cream"}],
+    todo:["Your own ice cream page did not show up in my search. Link it from the home page and check it in Search Console.",
+          "Add price, flavours, location and a short twirl video to that page.",
+          "DiveDeals lists a River Valley Rd outlet. Confirm it or ask for a fix.",
+          "Confirm the Ngee Ann City kiosk is still open, then update or remove it on Little Day Out.",
+          "Use both 'Turkish ice cream' and 'dondurma' in captions and alt text. Push the free ice cream offer in Google Business posts."] },
+  { name:"A1 Turkish Kebab", sub:"Lucky Plaza, Orchard Road (sister company)", level:"Low",
+    keywords:["orchard road food","lucky plaza food","halal food orchard","turkish kebab lucky plaza"],
+    found:[{t:"Foodpanda (Lucky Plaza)",u:"https://www.foodpanda.sg/restaurant/n5wy/a1-turkish-kebab-lucky-plaza"},
+           {t:"Foodpanda (Islandwide)",u:"https://www.foodpanda.sg/restaurant/yyui/a1-turkish-kebab-lucky-plaza-islandwide"},
+           {t:"Spinach guide",u:"https://spinach.guide/venues/a1-turkish-doner-kebab-37411/"}],
+    todo:["I found no blog, press or own website for A1. Delivery and one directory are the only hits.",
+          "Set up or verify the Google Business Profile with the exact name and unit number. I could not confirm the unit.",
+          "Spinach lists it as 'A1 Turkish Doner Kebab' with 9 AM to 11:30 PM hours. Fix the name and hours.",
+          "Add a dedicated A1 page (on donergy.sg or its own) for 'halal food Orchard' and 'Lucky Plaza food'.",
+          "Add a halal directory listing once the halal status wording is confirmed."] },
+  { name:"Turkuaz Turkish Kebab", sub:"V Hotel Lavender (same owner)", level:"Very Low",
+    keywords:["turkish food lavender","kebab lavender mrt","halal food lavender","turkuaz turkish kebab singapore"],
+    found:[],
+    todo:["I found no Singapore pages for Turkuaz. Results were Jakarta, New York and the Turkish word for turquoise.",
+          "Always write 'Turkuaz Turkish Kebab Lavender' in posts, hashtags and listings to separate it from the others.",
+          "Create or claim the Google Business Profile with the exact name, V Hotel address and hours.",
+          "Add delivery listings (Foodpanda, GrabFood) if it delivers, plus Burpple and a halal directory.",
+          "Add a landing page with address, menu, halal status (confirm first) and 'near Lavender MRT'. Link it from donergy.sg."] }
+];
 
-    { sort: 202009, label: "9 Sep", year: "2020", type: "Article",
-      title: "Donergy Offers Authentic Turkish Food in Singapore",
-      source: "Asian Journeys",
-      url: "https://asianjourneys.com.sg/09-Sep-2020/donergy-offers-authentic-turkish-food-in-singapore",
-      action: "update", worth: "Low",
-      note: "Uses the old unit number (01-90). Optional email asking for #01-91B. Low priority since it is a dated review." },
+(function () {
+  const list = document.getElementById("dg-list"), chips = document.getElementById("dg-chips"),
+        stats = document.getElementById("dg-stats"), copyBtn = document.getElementById("dg-copy"),
+        grid = document.getElementById("seo-grid");
+  const PILL = { update:"Update needed", claim:"Worth claiming", verify:"Verify", ok:"OK", skip:"Skip" };
+  const RANK = { High:0, Medium:1, Low:2 };
+  const FILTERS = ["All","Needs update","Worth claiming","Article","Blog","Review","Social","Listing"];
+  let active = "All";
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
 
-    { sort: 201807, label: "Jul", year: "2018", type: "Blog",
-      title: "Donergy Turkish Kebab: Get Your Turkish Fix Here",
-      source: "Hungry Ghost",
-      url: "https://hungryghostsg.blogspot.com/2018/07/blog-post.html",
-      action: "update", worth: "Low",
-      note: "Old unit number (#01-90), old phone and old hours. Its text is also copied onto Burpple. A blog comment with the new address is enough." },
+  function matches(m) {
+    if (active === "All") return true;
+    if (active === "Needs update") return m.action === "update" || m.action === "verify";
+    if (active === "Worth claiming") return m.action === "claim";
+    return m.type === active;
+  }
 
-    { sort: 201801, label: "6 Jan", year: "2018", type: "Social",
-      title: "\"First time trying Donergy!\" Instagram post",
-      source: "Burpple (Posh Code)",
-      url: "https://burpple.com/f/mo_rk4tT",
-      action: "skip", note: "Old social post. Nothing to fix." },
+  function render() {
+    const n = a => MENTIONS.filter(m => m.action === a).length;
+    stats.innerHTML = '<div class="dg-stat"><strong>' + n("update") + '</strong><span>to update</span></div>' +
+      '<div class="dg-stat"><strong>' + n("claim") + '</strong><span>to claim</span></div>' +
+      '<div class="dg-stat"><strong>' + n("verify") + '</strong><span>to verify</span></div>' +
+      '<div class="dg-stat"><strong>' + MENTIONS.length + '</strong><span>total</span></div>';
+    chips.innerHTML = FILTERS.map(t => '<button type="button" class="dg-chip' + (t === active ? " active" : "") + '" data-t="' + esc(t) + '">' + esc(t) + "</button>").join("");
+    const actionView = active === "Needs update" || active === "Worth claiming";
+    const items = MENTIONS.filter(matches).sort((a, b) => {
+      if (!!a.pin !== !!b.pin) return a.pin ? -1 : 1;
+      if (actionView) { const r = (RANK[a.worth] ?? 3) - (RANK[b.worth] ?? 3); if (r) return r; }
+      return b.sort - a.sort;
+    });
+    list.innerHTML = items.map(m => {
+      const worth = m.worth ? '<span class="dg-worth">Worth it: ' + esc(m.worth) + "</span>" : "";
+      const links = '<div class="dg-links"><a href="' + esc(m.url) + '" target="_blank" rel="noopener">Open page &#8599;</a>' +
+        (m.fix ? '<a href="' + esc(m.fix.url) + '" target="_blank" rel="noopener">' + esc(m.fix.label) + " &#8599;</a>" : "") + "</div>";
+      return '<li class="dg-item"><div class="dg-date"><strong>' + esc(m.label) + "</strong>" + esc(m.year) + "</div>" +
+        '<div class="dg-body"><a class="dg-t" href="' + esc(m.url) + '" target="_blank" rel="noopener">' + esc(m.title) + "</a>" +
+        '<div class="dg-meta"><span class="dg-tag">' + esc(m.type) + "</span>" + esc(m.source) + "</div>" +
+        '<div class="dg-act"><span class="dg-pill dg-pill-' + esc(m.action) + '">' + esc(PILL[m.action]) + "</span>" + worth +
+        '<div class="dg-note">' + esc(m.note) + "</div>" + links + "</div></div></li>";
+    }).join("");
+    chips.querySelectorAll(".dg-chip").forEach(b => b.addEventListener("click", () => { active = b.dataset.t; render(); }));
+  }
+  render();
 
-    /* Undated */
-    { sort: 0, label: "n/a", year: "", type: "Article",
-      title: "Best kebabs in Singapore (Donergy listed #1)",
-      source: "The Honeycombers",
-      url: "https://thehoneycombers.com/singapore/kebabs-in-singapore-our-guide-to-the-best-doner-shawarma-and-more-in-clarke-quay-orchard-road-and-arab-street/",
-      action: "ok", note: "Address and postal code are correct." },
+  grid.innerHTML = BRANDS.map(b => {
+    const kw = b.keywords.map(k => '<a href="https://www.google.com/search?q=' + encodeURIComponent(k) + '&gl=sg&hl=en" target="_blank" rel="noopener">' + esc(k) + "</a>").join("");
+    const found = b.found.length
+      ? "<ul>" + b.found.map(f => '<li><a href="' + esc(f.u) + '" target="_blank" rel="noopener">' + esc(f.t) + " &#8599;</a></li>").join("") + "</ul>"
+      : '<p class="seo-none">No Singapore pages found in my search.</p>';
+    return '<div class="seo-col"><div class="seo-top"><div><div class="seo-name">' + esc(b.name) + '</div><div class="seo-sub">' + esc(b.sub) +
+      '</div></div><span class="seo-lvl seo-lvl-' + esc(b.level.replace(/ /g, "")) + '">Visibility: ' + esc(b.level) + "</span></div>" +
+      '<div class="seo-h">TARGET KEYWORDS</div><div class="seo-kw">' + kw + "</div>" +
+      '<div class="seo-h">FOUND ONLINE</div>' + found +
+      '<div class="seo-h">TO DO</div><ul>' + b.todo.map(t => "<li>" + esc(t) + "</li>").join("") + "</ul></div>";
+  }).join("");
 
-    { sort: 0, label: "n/a", year: "", type: "Article",
-      title: "10 Shops For Hearty, Flavour-Packed Kebabs in Singapore",
-      source: "Women's Weekly",
-      url: "https://www.womensweekly.com.sg/food/kebabs-singapore",
-      action: "ok", note: "Address correct and links to your Instagram." },
-
-    { sort: 0, label: "n/a", year: "", type: "Article",
-      title: "Turkish Restaurant Singapore guide (Donergy listed #5)",
-      source: "The Fun Empire",
-      url: "https://www.thefunempire.com/turkish-restaurant-singapore/",
-      action: "update", worth: "Medium",
-      note: "Shows #01-90, phone +65 9655 5061 and hours 10 am to 9:30 pm. Confirm what is current, then email them with the right details." },
-
-    { sort: 0, label: "n/a", year: "", type: "Article",
-      title: "Turkish ice cream and the Donergy Orchard kiosk",
-      source: "Little Day Out",
-      url: "https://www.littledayout.com/turkish-ice-cream-in-singapore-twirling-antics-cool-cone",
-      action: "verify", worth: "Low",
-      note: "Covers the Orchard Road kiosk (Ngee Ann City), not Millenia Walk. Check the kiosk is still open. If not, ask them to update." },
-
-    { sort: 0, label: "n/a", year: "", type: "Listing",
-      title: "Donergy 'Turkish Kebab' profile and menu (newer)",
-      source: "Chope",
-      url: "https://www.chope.co/singapore-restaurants/restaurant/donergy-turkish-kebab",
-      action: "ok", note: "Correct address (#01-91B) and a proper brand story. This is the one to keep." },
-
-    { sort: 0, label: "n/a", year: "", type: "Listing",
-      title: "Donergy 'Turkish Kebab' (older duplicate)",
-      source: "Chope",
-      url: "https://www.chope.co/singapore-restaurants/restaurant/donergy-turkish-kebab-singapore",
-      action: "update", worth: "High",
-      note: "Duplicate listing with the old unit #01-90 and generic text. Ask Chope to merge or remove it so reviews and address are not split." },
-
-    { sort: 0, label: "n/a", year: "", type: "Listing",
-      title: "Donergy on Burpple (wishlists and reviews)",
-      source: "Burpple",
-      url: "https://burpple.com/donergy-turkish-kebab",
-      action: "claim", worth: "Medium",
-      note: "Address is correct. Hours looked incomplete (Monday blank) and the description is copied from a blog. Worth claiming if free, for the local foodie crowd. Look for the business claim option on the page." },
-
-    { sort: 0, label: "n/a", year: "", type: "Listing",
-      title: "Donergy Turkish Kebab (Millenia Walk), Islandwide",
-      source: "Foodpanda",
-      url: "https://www.foodpanda.sg/zh/restaurant/ssce/donergy-turkish-kebab-millenia-walk-islandwide",
-      action: "verify", worth: "Low",
-      note: "Delivery listing. Keep menu and prices in sync with the main Foodpanda listing." },
-
-    { sort: 0, label: "n/a", year: "", type: "Listing",
-      title: "Maybank cardholder offer page",
-      source: "Getz",
-      url: "https://donergy.getz.co/",
-      action: "verify", worth: "Medium",
-      note: "Check the offer is still running and the address matches. Take it down or update it if the promo ended." },
-
-    { sort: 0, label: "n/a", year: "", type: "Listing",
-      title: "Donergy Turkish Kebab reviews and details",
-      source: "Wanderlog",
-      url: "https://wanderlog.com/place/details/3978413/donergy-turkish-kebab",
-      action: "skip", worth: "Low",
-      note: "Not worth claiming. It pulls from Google, so fix Google and this follows." }
-  ];
-
-  (function () {
-    const list = document.getElementById("dg-list");
-    const chips = document.getElementById("dg-chips");
-    const stats = document.getElementById("dg-stats");
-    const copyBtn = document.getElementById("dg-copy");
-    if (!list || !chips || !stats) return;
-
-    const PILL = { update: "Update needed", claim: "Worth claiming", verify: "Verify", ok: "OK", skip: "Skip" };
-    const RANK = { High: 0, Medium: 1, Low: 2 };
-    const FILTERS = ["All", "Needs update", "Worth claiming", "Article", "Blog", "Review", "Social", "Listing"];
-    let active = "All";
-
-    function esc(s) {
-      return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-    }
-
-    function matches(m) {
-      if (active === "All") return true;
-      if (active === "Needs update") return m.action === "update" || m.action === "verify";
-      if (active === "Worth claiming") return m.action === "claim";
-      return m.type === active;
-    }
-
-    function render() {
-      const nUpdate = MENTIONS.filter(m => m.action === "update").length;
-      const nClaim = MENTIONS.filter(m => m.action === "claim").length;
-      const nVerify = MENTIONS.filter(m => m.action === "verify").length;
-      stats.innerHTML =
-        '<div class="dg-stat"><strong>' + nUpdate + "</strong><span>to update</span></div>" +
-        '<div class="dg-stat"><strong>' + nClaim + "</strong><span>to claim</span></div>" +
-        '<div class="dg-stat"><strong>' + nVerify + "</strong><span>to verify</span></div>" +
-        '<div class="dg-stat"><strong>' + MENTIONS.length + "</strong><span>total</span></div>";
-
-      chips.innerHTML = FILTERS.map(t =>
-        '<button type="button" class="dg-chip' + (t === active ? " active" : "") + '" data-t="' + esc(t) + '">' + esc(t) + "</button>"
-      ).join("");
-
-      const actionView = active === "Needs update" || active === "Worth claiming";
-      const items = MENTIONS.filter(matches).sort((a, b) => {
-        if (a.pin !== b.pin) return a.pin ? -1 : 1;
-        if (actionView) {
-          const r = (RANK[a.worth] ?? 3) - (RANK[b.worth] ?? 3);
-          if (r !== 0) return r;
-        }
-        return b.sort - a.sort;
-      });
-
-      list.innerHTML = items.map(m => {
-        const title = m.url
-          ? '<a href="' + esc(m.url) + '" target="_blank" rel="noopener">' + esc(m.title) + "</a>"
-          : '<span class="dg-title-plain">' + esc(m.title) + "</span>";
-        const worth = m.worth ? '<span class="dg-worth">Worth it: ' + esc(m.worth) + "</span>" : "";
-        return '<li class="dg-item">' +
-          '<div class="dg-date"><strong>' + esc(m.label) + "</strong>" + esc(m.year) + "</div>" +
-          '<div class="dg-body">' + title +
-            '<div class="dg-meta"><span class="dg-tag">' + esc(m.type) + "</span>" + esc(m.source) + "</div>" +
-            '<div class="dg-act"><span class="dg-pill dg-pill-' + esc(m.action) + '">' + esc(PILL[m.action]) + "</span>" + worth +
-              '<div class="dg-note">' + esc(m.note) + "</div></div>" +
-          "</div></li>";
-      }).join("");
-
-      chips.querySelectorAll(".dg-chip").forEach(b =>
-        b.addEventListener("click", () => { active = b.dataset.t; render(); })
-      );
-    }
-    render();
-
-    if (copyBtn) {
-      copyBtn.addEventListener("click", function () {
-        const text = document.getElementById("dg-addr-text").textContent;
-        try {
-          navigator.clipboard.writeText(text).then(
-            () => { copyBtn.textContent = "Copied"; setTimeout(() => { copyBtn.textContent = "Copy address"; }, 1500); },
-            () => { copyBtn.textContent = "Press Ctrl+C"; }
-          );
-        } catch (e) { copyBtn.textContent = "Select and copy"; }
-      });
-    }
-  })();
-</script><section class="sec" id="stories" aria-labelledby="h-s"><div class="sh"><h2 class="s" id="h-s">Latest stories</h2><p>Gathered from the sources below. Links open the original publisher.</p></div>
+  if (copyBtn) copyBtn.addEventListener("click", function () {
+    const text = document.getElementById("dg-addr-text").textContent;
+    try { navigator.clipboard.writeText(text).then(
+      () => { copyBtn.textContent = "Copied"; setTimeout(() => { copyBtn.textContent = "Copy address"; }, 1500); },
+      () => { copyBtn.textContent = "Press Ctrl+C"; }); }
+    catch (e) { copyBtn.textContent = "Select and copy"; }
+  });
+})();
+</script>
+<section class="sec" id="stories" aria-labelledby="h-s"><div class="sh"><h2 class="s" id="h-s">Latest stories</h2><p>Gathered from the sources below. Links open the original publisher.</p></div>
 <div class="sb"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><label for="q" style="position:absolute;left:-9999px">Search stories</label><input id="q" type="search" placeholder="Search stories, topics or ideas (e.g. “halal dining”, “catering”)"></div>
 <div class="f" id="f" role="group" aria-label="Filter stories by category"></div><p class="cnt" id="cnt" aria-live="polite"></p>
 <div id="grid" class="grid"><p class="state">Loading stories…</p></div><button class="mo" id="more" hidden>Show more</button></section>
