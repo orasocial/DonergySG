@@ -247,7 +247,7 @@ def main():
     data = {"cfg": CFG, "updated": NOW.isoformat() if ok else prev.get("updated"), "attempted": NOW.isoformat(), "ok": ok, "failed": len(failed), "sources": status,
             "feat": feat["l"] if feat else None, "featLabel": "Relevant to Donergy" if near else "Top Singapore story",
             "cats": CATS, "overseas": OVERSEAS, "trends": TRENDS, "articles": arts, "occasions": jload("holidays.json", [])}
-    sig = hashlib.sha1(json.dumps([[a["l"], a["cached"]] for a in arts] + [[x["n"], x["ok"]] for x in status]).encode()).hexdigest(); data["sig"] = sig
+    sig = hashlib.sha1(json.dumps([[a["l"], a["cached"]] for a in arts] + [[x["n"], x["ok"]] for x in status] + [hashlib.sha1(open("template.html", "rb").read()).hexdigest()]).encode()).hexdigest(); data["sig"] = sig
     pu = prev.get("updated")
     if prev.get("sig") == sig and pu and (NOW - datetime.fromisoformat(pu)).total_seconds() < 6 * 3600 and not os.environ.get("DD_OUT"):
         print("no new stories; page left unchanged (avoids hourly commit noise)"); return

@@ -79,9 +79,9 @@ nav{margin:0;width:100%;justify-content:space-between}nav button{padding:8px 6px
 <div class="w"><h2>YOUR NEXT GOOD IDEA STARTS HERE.</h2><p>Singapore food news, local happenings and inspiration for Donergy.</p></div></div>
 <main class="w" id="discover">
 <div class="top"><section aria-labelledby="h-f"><h2 class="s" id="h-f">Worth your attention</h2><div id="featbox"></div></section>
-<div class="side"><aside class="box up" id="occ" aria-labelledby="h-o"><h2 class="s" id="h-o">Coming up</h2><div id="ol"></div><div class="foot"><button class="lk" id="va"></button><button class="lk" id="addo">+ Add occasion</button></div></aside><style>
-.side{display:grid;gap:20px;align-items:start}
-.dg{padding:22px 22px 16px}.dg h2.s{margin-bottom:10px}
+<aside class="box up" id="occ" aria-labelledby="h-o"><h2 class="s" id="h-o">Coming up</h2><div id="ol"></div><div class="foot"><button class="lk" id="va"></button><button class="lk" id="addo">+ Add occasion</button></div></aside></div>
+<style>
+.dg{padding:22px 24px 16px;margin-top:34px}.dg h2.s{margin-bottom:10px}
 .dg-sub{font-size:13px;color:var(--mut);margin:0 0 12px}
 .dg-addr{background:var(--tint);border-radius:12px;padding:10px 12px;margin-bottom:12px}
 .dg-addr-label{font-size:11px;letter-spacing:.6px;color:var(--red);font-weight:600}
@@ -95,9 +95,9 @@ nav{margin:0;width:100%;justify-content:space-between}nav button{padding:8px 6px
 .dg-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .dg-chip{border:1px solid var(--line);background:#fff;border-radius:99px;padding:3px 11px;font-size:12.5px}
 .dg-chip.active{background:var(--red);border-color:var(--red);color:#fff}
-.dg-list{list-style:none;margin:0;padding:0;max-height:560px;overflow-y:auto}
+.dg-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px;max-height:620px;overflow-y:auto}
 .dg-item{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
-.dg-item:first-child{border-top:0}
+.dg-item:nth-child(-n+2){border-top:0}
 .dg-date{flex:0 0 52px;align-self:flex-start;background:var(--tint);border-radius:10px;text-align:center;padding:6px 2px;font-size:11px;line-height:1.25;color:var(--mut)}
 .dg-date strong{display:block;font:400 15px Anton,Impact,sans-serif;color:var(--ink)}
 .dg-body{min-width:0}
@@ -111,11 +111,17 @@ nav{margin:0;width:100%;justify-content:space-between}nav button{padding:8px 6px
 .dg-worth{font-size:12px;color:var(--mut)}
 .dg-note{font-size:13px;margin-top:5px;line-height:1.4}
 .dg-foot{font-size:12px;color:var(--mut);margin:12px 0 0}
+</style><style>
+.dg-head{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch;margin-bottom:12px}
+.dg-head .dg-addr,.dg-head .dg-stats{margin:0}
+.dg-head .dg-stats .dg-stat{display:flex;flex-direction:column;justify-content:center}
+@media(max-width:1000px){.dg-head{grid-template-columns:1fr}.dg-list{grid-template-columns:1fr}.dg-item:nth-child(2){border-top:1px solid var(--line)}}
 </style><section class="box dg" aria-labelledby="h-dg">
 <h2 class="s" id="h-dg">Donergy in the wild</h2>
 <p class="dg-sub">Articles, blogs, reviews, social posts and listings mentioning Donergy Turkish Kebab, with what to fix or claim.</p>
-<div class="dg-addr"><div class="dg-addr-label">CURRENT ADDRESS (use this everywhere)</div><div class="dg-addr-text" id="dg-addr-text">Donergy Turkish Kebab, 9 Raffles Boulevard, #01-91B Millenia Walk, Singapore 039596</div><button type="button" class="dg-copy" id="dg-copy">Copy address</button></div>
+<div class="dg-head"><div class="dg-addr"><div class="dg-addr-label">CURRENT ADDRESS (use this everywhere)</div><div class="dg-addr-text" id="dg-addr-text">Donergy Turkish Kebab, 9 Raffles Boulevard, #01-91B Millenia Walk, Singapore 039596</div><button type="button" class="dg-copy" id="dg-copy">Copy address</button></div>
 <div class="dg-stats" id="dg-stats"></div>
+</div>
 <div class="dg-chips" id="dg-chips"></div>
 <ul class="dg-list" id="dg-list"></ul>
 <p class="dg-foot">Claim status is based on what the public pages show. Confirm inside each platform before acting.</p>
@@ -332,8 +338,7 @@ nav{margin:0;width:100%;justify-content:space-between}nav button{padding:8px 6px
       });
     }
   })();
-</script></div></div>
-<section class="sec" id="stories" aria-labelledby="h-s"><div class="sh"><h2 class="s" id="h-s">Latest stories</h2><p>Gathered from the sources below. Links open the original publisher.</p></div>
+</script><section class="sec" id="stories" aria-labelledby="h-s"><div class="sh"><h2 class="s" id="h-s">Latest stories</h2><p>Gathered from the sources below. Links open the original publisher.</p></div>
 <div class="sb"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><label for="q" style="position:absolute;left:-9999px">Search stories</label><input id="q" type="search" placeholder="Search stories, topics or ideas (e.g. “halal dining”, “catering”)"></div>
 <div class="f" id="f" role="group" aria-label="Filter stories by category"></div><p class="cnt" id="cnt" aria-live="polite"></p>
 <div id="grid" class="grid"><p class="state">Loading stories…</p></div><button class="mo" id="more" hidden>Show more</button></section>
