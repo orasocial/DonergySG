@@ -133,6 +133,9 @@ nav{margin:0;width:100%;justify-content:space-between}nav button{padding:8px 6px
 .seo-col li a{font-weight:600;color:var(--ink)}
 .seo-col li a:hover{color:var(--red)}
 .seo-none{font-size:13px;color:var(--mut);margin:0}
+.boost{padding:22px 24px 18px;margin-top:20px}.boost h2.s{margin-bottom:10px}
+.boost-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+.boost li strong{font-weight:600}.boost li span{color:var(--mut)}
 .seo-view{font-size:12.5px;font-weight:600;color:var(--red);text-decoration:none}
 @media(max-width:1000px){.dg-head{grid-template-columns:1fr}.dg-list{grid-template-columns:1fr}.dg-item:nth-child(2){border-top:1px solid var(--line)}}
 </style>
@@ -153,6 +156,12 @@ nav{margin:0;width:100%;justify-content:space-between}nav button{padding:8px 6px
 <h2 class="s" id="h-seo">SEO visibility by brand</h2>
 <p class="dg-sub">Based on a few Singapore searches, not live rankings. Tap a keyword to check it on Google (Singapore).</p>
 <div class="seo-grid" id="seo-grid"></div>
+</section>
+
+<section class="box boost" aria-labelledby="h-boost">
+<h2 class="s" id="h-boost">How to raise visibility</h2>
+<p class="dg-sub">Steps to help each brand show up higher in Singapore searches. Start with This week, then work down.</p>
+<div class="boost-grid" id="boost-grid"></div>
 </section>
 
 <script>
@@ -269,6 +278,40 @@ const BRANDS = [
           "Add a landing page with address, menu, halal status (confirm first) and 'near Lavender MRT'. Link it from donergy.sg."] }
 ];
 
+const BOOST = [
+  { name:"This week", sub:"Quick fixes with the biggest payoff",
+    items:[
+      {h:"Set one master for name, address, phone and hours", d:"For Donergy use #01-91B and 11 AM to 9:30 PM (last order 9 PM) everywhere. Search engines trust listings that all match."},
+      {h:"Fix the Google Business Profile for all three outlets", d:"Exact name, address, hours, phone, halal status, categories and fresh photos. A1 and Turkuaz need theirs set up or verified first."},
+      {h:"Put 'halal' and MUIS-certified in the title, H1 and meta description", d:"On donergy.sg. A quick on page fix for 'halal food' searches."},
+      {h:"Send the correction requests", d:"The Honeycombers postal code, the Chope duplicate, the HalalBoleh tag and the Fun Empire unit number. They are listed in the section above."},
+      {h:"Claim TripAdvisor and Burpple", d:"Both are free. Fix the hours and reply to reviews."}
+    ]},
+  { name:"This month", sub:"Build the pages search engines can find",
+    items:[
+      {h:"Give each outlet its own page", d:"Address, menu, halal status, a map and nearby landmarks (Millenia Walk, Lucky Plaza, Lavender MRT). A1 and Turkuaz have none today."},
+      {h:"Finish the ice cream page", d:"Add price, flavours, location and a short twirl video, then link it from the home page."},
+      {h:"Add Restaurant schema", d:"Address, hours and cuisine, then test it with the Rich Results Test."},
+      {h:"Write for the target keywords", d:"One blog post per keyword, for example 'halal lunch near Millenia Walk'. Link each post to the menu and the ice cream page."},
+      {h:"Set up Google Search Console", d:"Submit the sitemap and note which queries and pages bring people in."},
+      {h:"Use keywords in image alt text and file names", d:"For example 'Turkish ice cream' and 'dondurma'."}
+    ]},
+  { name:"Every month", sub:"Habits that keep visibility growing",
+    items:[
+      {h:"Ask happy customers for Google reviews", d:"Put a QR code at the counter and reply to every review within a few days. Google does not allow rewards in exchange for reviews."},
+      {h:"Post on Google Business every week", d:"New dishes, offers and the free ice cream offer."},
+      {h:"Earn local links", d:"Offer complimentary tastings to food bloggers and ask area guides and halal directories to list you."},
+      {h:"Link your socials to the website", d:"Add donergy.sg to the Instagram, TikTok and Facebook bios and keep the outlet names identical everywhere."},
+      {h:"Recheck visibility", d:"Run the keyword searches again, note where each outlet shows up and update the levels above."}
+    ]},
+  { name:"Biggest lever per brand", sub:"If you only do one thing for each",
+    items:[
+      {h:"Donergy Turkish Kebab (Medium)", d:"Add 'halal' and MUIS-certified to the title, H1 and meta description, and match the hours on every listing."},
+      {h:"A1 Turkish Kebab and Ice Cream (Low)", d:"Set up or verify the Google Business Profile, then add its own page."},
+      {h:"Turkuaz Turkish Kebab (Very Low)", d:"Create the Google Business Profile and a landing page, and always write 'Turkuaz Turkish Kebab Lavender'."}
+    ]}
+];
+
 (function () {
   const list = document.getElementById("dg-list"), chips = document.getElementById("dg-chips"),
         stats = document.getElementById("dg-stats"), copyBtn = document.getElementById("dg-copy"),
@@ -324,6 +367,12 @@ const BRANDS = [
       '<div class="seo-h">FOUND ONLINE</div>' + found +
       '<div class="seo-h">TO DO</div><ul>' + b.todo.map(t => "<li>" + esc(t) + "</li>").join("") + "</ul></div>";
   }).join("");
+
+  const boost = document.getElementById("boost-grid");
+  if (boost) boost.innerHTML = BOOST.map(g =>
+    '<div class="seo-col"><div class="seo-name">' + esc(g.name) + '</div><div class="seo-sub">' + esc(g.sub) + "</div>" +
+    '<ul style="margin-top:10px">' + g.items.map(i => "<li><strong>" + esc(i.h) + "</strong> <span>" + esc(i.d) + "</span></li>").join("") + "</ul></div>"
+  ).join("");
 
   if (copyBtn) copyBtn.addEventListener("click", function () {
     const text = document.getElementById("dg-addr-text").textContent;
